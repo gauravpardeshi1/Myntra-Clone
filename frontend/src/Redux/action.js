@@ -1,6 +1,7 @@
 import * as types from "./actiontypes";
 import axios from "axios";
 const URL = "https://obtainable-gray-tenor.glitch.me/allproducts";
+const WOMEN_URL='http://localhost:8080/womensdata'
 export const getProduct = (params) => (dispatch) => {
 	dispatch({ type: types.GET_PRODUCT_REQUEST });
 	axios
@@ -14,7 +15,19 @@ export const getProduct = (params) => (dispatch) => {
 			dispatch({ type: types.GET_PRODUCT_FAILURE });
 		});
 };
-const mens_url='https://www.myntra.com/gateway/v2/search/tshirts%20under%20300?rawQuery=tshirts+under+300&o=50&ifo=0&ifc=3&pincode=411009&rows=50&requestType=ANY&f=Gender%3Amen%2Cmen+women&priceBuckets=20'
+
+export const getWomenProduct =(dispatch) => {
+	dispatch({ type: types.GET_WOMENS_PRODUCT_REQUEST });
+	axios
+		.get(`${WOMEN_URL}?_page=${1}&_limit=9`)
+		.then((res) => {
+			
+			dispatch({ type: types.GET_WOMENS_PRODUCT_SUCCESS, payload: res.data });
+		})
+		.catch((err) => {
+			dispatch({ type: types.GET_WOMENS_PRODUCT_FAILURE});
+		});
+};
 
 
 

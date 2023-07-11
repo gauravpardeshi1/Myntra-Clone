@@ -62,6 +62,7 @@ export function Rating({ rating, numReviews }) {
 export function ProductCard({
 	id,
 	name,
+	para,
 	price,
 	star_rating_percentage,
 	media,
@@ -71,10 +72,11 @@ export function ProductCard({
 	rating,
 	rating_count,
 	image_url,
+	rs
 }) {
 	const randomBolean = () => Math.random() >= 0.5;
 	const navigate = useNavigate();
-	const { url } = media[0];
+	// const { url } = media[0];
 	return (
 		<Flex alignItems='center' justifyContent='center'>
 			<Box
@@ -94,8 +96,8 @@ export function ProductCard({
 				rounded='lg'
 				shadow='lg'
 				>
-				<Box h='250px' roundedTop='lg'>
-					<Image src={url} alt={name} roundedTop='lg' />
+				<Box h='50%' roundedTop='lg'>
+					<Image src={image_url} alt={name} roundedTop='lg' />
 				</Box>
 				<Box p='4'>
 					<Box display='flex' alignItems='baseline'>
@@ -129,12 +131,12 @@ export function ProductCard({
 							as='h5'
 							lineHeight='tight'
 							isTruncated>
-							{name}
+							{para}
 						</Box>
 						
 					</Flex>
 					<Flex justifyContent='space-between' alignContent='center'>
-						<Rating rating={rating} numReviews={rating_count} />
+						<Rating rating={rating} numReviews={rating*50} />
 						<Code
 							fontSize='md'
 							color={useColorModeValue("gray.800", "black")}
@@ -142,7 +144,7 @@ export function ProductCard({
 							fontWeight='bold'
 							bg={useColorModeValue("yellow.100", "yellow.200")}
 							letterSpacing={0}>
-							₹{price}
+							₹{rs}
 						</Code>
 					</Flex>
 					<Button

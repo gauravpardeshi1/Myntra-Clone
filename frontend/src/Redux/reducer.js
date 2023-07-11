@@ -3,7 +3,7 @@ const initialState = {
 	loading: false,
 	error: false,
 	products: [],
-    mensproducts: [],
+    womensproducts: [],
 	cart: [],
 	total: 0,
 	auth: false,
@@ -29,7 +29,24 @@ export const reducer = (state = initialState, { type, payload }) => {
 				loading: false,
 				error: true,
 			};
-           
+			case types.GET_WOMENS_PRODUCT_REQUEST:
+				return {
+					...state,
+					loading: true,
+				};
+			case types.GET_WOMENS_PRODUCT_SUCCESS:
+				return {
+					...state,
+					loading: false,
+					womensproducts: payload,
+				
+				};
+			case types.GET_WOMENS_PRODUCT_FAILURE:
+				return {
+					...state,
+					loading: false,
+					error: true,
+				};
 		
 		default:
 			return state;

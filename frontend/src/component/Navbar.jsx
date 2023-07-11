@@ -53,7 +53,7 @@ export default function WithSubnavigation() {
 
 
 
-            <Box >
+            <Box  position={'sticky'} zIndex={100} top={0} margin={0}>
 
                 <Flex
 
@@ -104,7 +104,7 @@ export default function WithSubnavigation() {
                         {/* <BiSearch size={25} /> */}
 
                         {/* <Tooltip hasArrow label='Search' bg='gray.300' color='black'> */}
-                            <Box marginRight={{ lg: '40px' }} w={{ base: '200px', sm: '150px', md: '400px', lg: '500px' }} > <Input placeholder='Search here' /></Box>
+                        <Box marginRight={{ lg: '40px' }} w={{ base: '200px', sm: '150px', md: '400px', lg: '500px' }} > <Input placeholder='Search here' /></Box>
                         {/* </Tooltip> */}
 
                         <Tooltip hasArrow label='Account' bg='gray.300' color='black'>
@@ -404,7 +404,7 @@ const NAV_ITEMS = [
                 ],
                 href: '#',
             }
-        ],
+        ], href: '/womens',
 
     },
     {
