@@ -1,39 +1,41 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Box, Heading, Input, Text} from '@chakra-ui/react'
 import { Grid } from "@chakra-ui/react";
 import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useSearchParams } from "react-router-dom";
-import { getProduct } from "../Redux/action";
+import { getMensProduct, getProduct } from "../Redux/action";
 import CardSkeleton from "./CardSkeleton";
 import Productcard, { ProductCard } from "./Productcard";
 import axios from 'axios'
 const Mens = () => {
 
-  const { products, loading, error } = useSelector((state) => state.products);
+  const { mens, loading, error } = useSelector((state) => state.products);
  
 	const [searchParams, setSearchParams] = useSearchParams();
 	const location = useLocation();
 	const dispatch = useDispatch();
-  const categoryParamas = {
-		params: {
-			category_values: searchParams.getAll("category_values"),
-			brand_name: searchParams.getAll("brand_name"),
-			_sort: searchParams.get("order") && "price",
-			_order: searchParams.get("order"),
-			_page: searchParams.get("page") || 1,
-			_limit: 9,
-		},
-	};
+//   const categoryParamas = {
+// 		params: {
+// 			category_values: searchParams.getAll("category_values"),
+// 			brand_name: searchParams.getAll("brand_name"),
+// 			_sort: searchParams.get("order") && "price",
+// 			_order: searchParams.get("order"),
+// 			_page: searchParams.get("page") || 1,
+// 			_limit: 9,
+// 		},
+// 	};
 
   
-	React.useEffect(() => {
-		document.title = "Products";
-		dispatch(getProduct(categoryParamas));
+// 	React.useEffect(() => {
+// 		document.title = "Products";
+// 		dispatch(getProduct(categoryParamas));
 
     
-  }, [location.search]);
- 
+//   }, [location.search]);
+useEffect(()=>{
+	dispatch(getMensProduct)
+},[])
   return  loading ? (
 		<><Box w='100%' display={'flex'} gap='40px'  > 
     <Box w='30%'></Box>
@@ -88,7 +90,7 @@ const Mens = () => {
 				gap={2}
 				rowGap={6}
 				mt={6}>
-				{products?.map(
+				{mens?.map(
 					(item, idx) =>
 						item.id !== "0z5ON4w" && (
 							<ProductCard key={item.id} {...item} />

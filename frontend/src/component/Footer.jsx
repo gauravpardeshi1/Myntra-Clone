@@ -3,7 +3,7 @@ import { Box, Heading, Flex, List, ListItem, Link, Text } from '@chakra-ui/react
 const Footer = () => {
   return (
     <Box
-   
+    position={'sticky'} zIndex={100}
       as="footer"
       bg="gray.200"
       borderTop="1px solid"

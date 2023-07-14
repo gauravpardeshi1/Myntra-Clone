@@ -3,7 +3,9 @@ const initialState = {
 	loading: false,
 	error: false,
 	products: [],
+	mens:[],
     womensproducts: [],
+	funitureData:[],
 	cart: [],
 	total: 0,
 	auth: false,
@@ -47,7 +49,42 @@ export const reducer = (state = initialState, { type, payload }) => {
 					loading: false,
 					error: true,
 				};
-		
+				case types.GET_FUNITURE_PRODUCT_REQUEST:
+					return {
+						...state,
+						loading: true,
+					};
+				case types.GET_FUNITURE_PRODUCT_SUCCESS:
+					return {
+						...state,
+						loading: false,
+						funitureData: payload,
+					
+					};
+				case types.GET_FUNITURE_PRODUCT_FAILURE:
+					return {
+						...state,
+						loading: false,
+						error: true,
+					};
+					case types.GET_MENS_PRODUCT_REQUEST:
+					return {
+						...state,
+						loading: true,
+					};
+				case types.GET_MENS_PRODUCT_SUCCESS:
+					return {
+						...state,
+						loading: false,
+						mens: payload,
+					
+					};
+				case types.GET_MENS_PRODUCT_FAILURE:
+					return {
+						...state,
+						loading: false,
+						error: true,
+					};
 		default:
 			return state;
 	}

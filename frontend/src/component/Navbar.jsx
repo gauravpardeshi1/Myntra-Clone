@@ -158,7 +158,7 @@ const DesktopNav = () => {
                                     color={linkColor}
                                     _hover={{
                                         textDecoration: 'none',
-                                        color: linkHoverColor,
+                                        color: 'pink.500',
                                     }}>
                                     {navItem.label}
                                 </Link>
@@ -201,18 +201,18 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
                 p={2}
                 rounded={'md'}
 
-                _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}>
+                _hover={{ bg: 'none'}}>
 
 
                 <Box textAlign='left'>
                     <Text
                         transition={'all .3s ease'}
-                        _groupHover={{ color: 'pink.400' }}
+                        _groupHover={{ color: 'red.400' }}
                         fontWeight={500}>
                         {label}
                     </Text>
                     <Text fontSize={'sm'} fontWeight={500}>{subLabel.map((e, i) =>
-                        <Box key={i} mt="20px" > <ul>{e.sub}</ ul> </Box>
+                        <Box key={i} mt="20px"  _hover={{ bg: 'none',color:'blue.500'}}> <ul>{e.sub}</ ul> </Box>
 
                     )}</Text>
                 </Box>
@@ -231,6 +231,7 @@ const MobileNav = () => {
         <Stack
             bg={useColorModeValue('white', 'gray.800')}
             p={4}
+            
             display={{ md: 'none' }}>
             {NAV_ITEMS.map((navItem, index) => (
                 <MobileNavItem key={index} {...navItem} />
@@ -439,7 +440,7 @@ const NAV_ITEMS = [
                 href: '/product',
             },
 
-        ],
+        ],href:'/funiture'
     },
     {
         label: 'BEAUTY',
@@ -477,7 +478,7 @@ const NAV_ITEMS = [
                 href: '/product',
             },
 
-        ],
+        ],href:'/success'
     }
 
 ];
