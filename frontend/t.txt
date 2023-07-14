@@ -6,3 +6,7 @@
 
    
     </Box> 
+
+    mens =73 
+    furniture=36
+    women=1

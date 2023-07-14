@@ -118,7 +118,11 @@ export default function WithSubnavigation() {
                             }} display="flex" alignItems={"center"} _hover={{ cursor: "pointer" }}> <AiOutlineStar size={25} /><Text textAlign={"center"} background="#FA4279" borderRadius={"50%"} marginTop={"-10px"} marginLeft={"-6px"} width="20px" height="20px" fontSize={14} color="white" fontWeight={600}>1</Text></Box>
                         </Tooltip>
                         <Tooltip hasArrow label='Cart' bg='gray.300' color='black'>
-                            <Box _hover={{ cursor: "pointer" }} display="flex" alignItems={"center"}> <BiShoppingBag size={25} /><Text textAlign={"center"} background="#FA4279" borderRadius={"52%"} marginTop={"-10px"} marginLeft={"-6px"} width="20px" height="20px" fontSize={14} color="white" fontWeight={600}>0</Text></Box>
+                            <Box onClick={() => {
+                                navigate("/cart")
+                                setupdate(!update)
+
+                            }}  _hover={{ cursor: "pointer" }} display="flex" alignItems={"center"}> <BiShoppingBag size={25} /><Text textAlign={"center"} background="#FA4279" borderRadius={"52%"} marginTop={"-10px"} marginLeft={"-6px"} width="20px" height="20px" fontSize={14} color="white" fontWeight={600}>0</Text></Box>
                         </Tooltip>
 
 

@@ -7,8 +7,8 @@ import Mens from '../pages/Mens'
 import Womens from '../pages/Womens'
 import Funiture from '../pages/FunitureData'
 import ConfirmOrder from '../pages/Confirm'
-import SingleProduct from '../pages/SingleProduct'
-import { Cart } from '../pages/Cart/cart'
+import Simple from '../pages/SingleProduct'
+import Cart from '../pages/cart'
 
 const AllRoutes = () => {
   return (
@@ -20,8 +20,8 @@ const AllRoutes = () => {
       <Route path='/womens' element={<Womens/>}/>
       <Route path='/funiture' element={<Funiture/>}/>
       <Route path='/success' element={<ConfirmOrder/>}/>
-      <Route path='/details/:para' element={<SingleProduct/>}/>
-      <Route path='/cart' element={<Cart/>}/>
+      <Route path='/details/:id' element={<Simple/>}/>
+      <Route path='/cart' element={<Cart/>} />
       
     </Routes>
   )

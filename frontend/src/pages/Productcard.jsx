@@ -152,7 +152,7 @@ export function ProductCard({
 						mt='3'
 						colorScheme={useColorModeValue("pink", "pink")}
                         position={'none'}
-						onClick={() => navigate(`/details/${para}`)}>
+						onClick={() => navigate(`/details/${id}`)}>
 						More Details
 					</Button>
 				</Box>
