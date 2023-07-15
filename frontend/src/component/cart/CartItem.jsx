@@ -7,7 +7,12 @@ import {
 } from "@chakra-ui/react";
 import { PriceTag } from "./PriceTag";
 import { CartProductMeta } from "./CartProductMeta";
+import { deleteToCart } from "../../Redux/action";
+import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 const QuantitySelect = (props) => {
+
+	
 	return (
 		<Select
 			maxW='64px'
@@ -23,18 +28,33 @@ const QuantitySelect = (props) => {
 };
 
 export const CartItem = (props) => {
+	const [update,setupdate]=useState(false)
 	const {
 		isGiftWrapping,
-		name,
-		_id,
+		image_url,
+		id,
+		para,
+		rs,
+		brand,
 		title,
 		image,
 		currency,
 		price,
-		onChangeQuantity,
-		onClickDelete,
+		onChangeQuantity
+	
 	} = props;
+	const dispatch=useDispatch()
+	const onClickDelete=(id)=>{
+		dispatch(deleteToCart(id))
+		setupdate(!update)
+		window.location.reload()
+	}
+
+	useEffect(()=>{
 		
+
+	},[update])
+	
 	return (
 		<Flex
 			direction={{
@@ -44,9 +64,9 @@ export const CartItem = (props) => {
 			justify='space-between'
 			align='center'>
 			<CartProductMeta
-				name={title}
-				description={_id}
-				image={'https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80'}
+				name={para}
+				description={brand}
+				image={image_url}
 				isGiftWrapping={isGiftWrapping}
 			/>
 
@@ -61,13 +81,13 @@ export const CartItem = (props) => {
 				<QuantitySelect
 					// value={1}
 					onChange={(e) => {
-						onChangeQuantity?.(+e.currentTarget.value);
+						console.log('q',+e.target.value);
 					}}
 				/>
-				<PriceTag price={999}  />
+				<PriceTag price={rs || price}  />
 				<CloseButton
-					aria-label={`Delete ${title} from cart`}
-					onClick={onClickDelete}
+					aria-label={`Delete ${para} from cart`}
+					onClick={()=>onClickDelete(id)}
 				/>
 			</Flex>
 
@@ -81,19 +101,19 @@ export const CartItem = (props) => {
 					base: "flex",
 					md: "none",
 				}}>
-				<Link fontSize='sm' textDecor='underline'>
+				<Link onClick={()=>onClickDelete(id)} fontSize='sm' textDecor='underline'>
 					Delete
 				</Link>
 				<QuantitySelect
 					// value={1}
 					onChange={(e) => {
-						onChangeQuantity?.(+e.currentTarget.value);
+						console.log('q',+e.target.value);
 					}}
 				/>
 				<PriceTag
-					price={price}
+					price={rs || price}
 					currency={currency}
-					salePrice={price * 0.8}
+					salePrice={rs || price * 0.8}
 				/>
 			</Flex>
 		</Flex>

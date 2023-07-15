@@ -23,7 +23,9 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 import LoadingSpinner from '../component/Spinner/Spinner';
-
+import { addToCart, getToCart } from '../Redux/action';
+import { useDispatch, useSelector } from 'react-redux';
+import toast, { Toaster } from 'react-hot-toast';
   export default function Simple() {
     const [loading, setloading] = useState(true);
   const [data, setdata] = useState({});
@@ -52,11 +54,46 @@ import LoadingSpinner from '../component/Spinner/Spinner';
       
   };
  // console.log("dataPrrr",data)
+ const { cart } = useSelector((state) => state.products);
+
+ const dispatch=useDispatch()
+ const handlecart=()=>{
+  //console.log(data)
+  let flag=true
+  for(let i=0; i<cart.length; i++){
+    if(data.id==cart[i].id){
+      flag=false
+
+            break;
+    }
+  }
+  if(flag){
+    dispatch(addToCart(data))
+    toast.success('Look at my styles.', {
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+      iconTheme: {
+        primary: '#713200',
+        secondary: '#FFFAEE',
+      },
+    });
+  }else{
+    toast.error("Product already in Cart")
+  }
+      
+      
+    
+  
+ }
   useEffect(() => {
     setTimeout(() => {
       setloading(false)
     }, 1000);
     pro();
+    dispatch(getToCart)
   }, []);
 
  const Rating=({ rating, numReviews })=>{
@@ -109,6 +146,7 @@ import LoadingSpinner from '../component/Spinner/Spinner';
 
     return (
       <> 
+      <Toaster/>
       {loading ? <LoadingSpinner/>:
       <Container maxW={'7xl'}>
         <SimpleGrid
@@ -211,7 +249,7 @@ data.image_url              }
                 boxShadow: 'lg',
                 background:'gray.700',
                 color:'white'
-              }}>
+              }} onClick={handlecart}>
               Add to cart
             </Button>
   

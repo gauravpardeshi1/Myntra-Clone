@@ -5,6 +5,8 @@ const MENS_URL='http://localhost:8080/mensproducts'
 const WOMEN_URL='http://localhost:8080/womensdata'
 const FUNITURE_URL='http://localhost:8080/funitureData'
 const KIDS_URL='http://localhost:8080/kids'
+const CART_URL='http://localhost:8080/cart'
+const USER_URL='http://localhost:8080/myntra_users'
 export const getProduct = (params) => (dispatch) => {
 	dispatch({ type: types.GET_PRODUCT_REQUEST });
 	axios
@@ -77,6 +79,50 @@ export const getfunitureProduct=(page,obj)=>(dispatch) => {
 };
 
 
+
+export const addToCart=(data)=>(dispatch)=>{
+	axios.post(CART_URL,data)
+	.then(() => {
+			
+		dispatch({ type: types.ADD_TO_CART});
+	})
+	
+}
+
+export const deleteToCart=(id)=>(dispatch)=>{
+	axios.delete(`${CART_URL}/${id}`)
+	.then(() => {
+			
+		dispatch({ type: types.DELETE_TO_CART});
+	})
+	
+}
+export const getToCart=(dispatch)=>{
+	axios.get(CART_URL)
+	.then((res) => {
+			
+		dispatch({ type: types.GET_TO_CART, payload: res.data });
+	})
+	
+}
+
+export const addUser=(data)=>(dispatch)=>{
+	axios.post(USER_URL,data)
+	.then(() => {
+			
+		dispatch({ type: types.ADD_USER});
+	})
+	
+}
+
+export const getUser=(dispatch)=>{
+	axios.get(USER_URL)
+	.then((res) => {
+			
+		dispatch({ type: types.GET_USER, payload: res.data });
+	})
+	
+}
 
 
 

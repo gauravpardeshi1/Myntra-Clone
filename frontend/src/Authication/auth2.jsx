@@ -13,11 +13,62 @@ import {
     Image,
     Text,
   } from '@chakra-ui/react'
-  
+  import {
+    
+    IconButton,
+    
+    InputGroup,
+    InputProps,
+    InputRightElement,
+    useDisclosure,
+    useMergeRefs,
+  } from '@chakra-ui/react'
+  import { forwardRef, useEffect, useRef } from 'react'
+  import { HiEye, HiEyeOff } from 'react-icons/hi'
   import { OAuthButtonGroup } from './authbutton'
   import { PasswordField } from './passwordfield'
-  
-   const Register = () => (
+import { useState } from 'react'
+import { addUser } from '../Redux/action'
+import { useDispatch } from 'react-redux'
+import toast, { Toaster } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom'
+
+   const Register = () => {
+   const[name,setname]=useState('')
+   const[mobile_no,setmobile_no]=useState('')
+   const[email,setemail]=useState('')
+   const[password,setpassword]=useState('')
+   const { isOpen, onToggle } = useDisclosure()
+   const inputRef = useRef<HTMLInputElement>(null)
+ 
+   const mergeRef = useMergeRefs(inputRef)
+   const onClickReveal = () => {
+     onToggle()
+     if (inputRef.current) {
+       inputRef.current.focus({ preventScroll: true })
+     }
+   }
+   const dispatch=useDispatch()
+   const navigate=useNavigate()
+   const HandleSubmit=(e)=>{
+ e.preventDefault()
+ let data={
+  name,email,password,mobile_no
+ }
+ dispatch(addUser(data))
+ setemail('')
+ setmobile_no('')
+ setpassword('')
+ setname('')
+ toast.success('Successfully Registred !!')
+ navigate('/login')
+   }
+
+   
+return ( 
+  <>
+  <Toaster/>
+ 
     <Container   maxW="lg" py={{ base: '12', md: '24' }} px={{ base: '0', sm: '8' }}>
       <Stack spacing="8">
         <Stack spacing="6">
@@ -42,17 +93,39 @@ import {
             <Stack spacing="5">
             <FormControl >
                 <FormLabel htmlFor="name">Name</FormLabel>
-                <Input id="name" type="text" />
+                <Input id="name" type="text" value={name} onChange={(e)=>setname(e.target.value)} />
               </FormControl>
               <FormControl >
                 <FormLabel htmlFor="number">Mobile No</FormLabel>
-                <Input id="mobile" type="number" />
+                <Input id="mobile" type="number" value={mobile_no} onChange={(e)=>setmobile_no(e.target.value)} />
               </FormControl>
               <FormControl >
                 <FormLabel htmlFor="email">Email</FormLabel>
-                <Input id="email" type="email" />
+                <Input id="email" type="email" value={email} onChange={(e)=>setemail(e.target.value)} />
               </FormControl>
-              <PasswordField />
+              <FormControl>
+        <FormLabel htmlFor="password">Password</FormLabel>
+        <InputGroup>
+          <InputRightElement>
+            <IconButton
+              variant="link"
+              aria-label={isOpen ? 'Mask password' : 'Reveal password'}
+              icon={isOpen ? <HiEyeOff /> : <HiEye />}
+              onClick={onClickReveal}
+            />
+          </InputRightElement>
+          <Input
+            id="password"
+           
+            name="password"
+            type={isOpen ? 'text' : 'password'}
+            autoComplete="current-password"
+            required
+           value={password} 
+           onChange={(e)=>setpassword(e.target.value)}
+          />
+        </InputGroup>
+      </FormControl>
             </Stack>
             <HStack justify="space-between">
               <Checkbox defaultChecked>Remember me</Checkbox>
@@ -61,7 +134,7 @@ import {
               </Button>
             </HStack>
             <Stack spacing="6">
-              <Button bg='#ff3f6c' color='white' _hover={{cursor:"pointer"}} >CONTINUE</Button>
+              <Button bg='#ff3f6c' color='white' _hover={{cursor:"pointer"}} onClick={HandleSubmit} >CONTINUE</Button>
               <HStack>
                 <Divider />
                 <Text fontSize="sm" whiteSpace="nowrap" color="muted">
@@ -75,6 +148,8 @@ import {
         </Box>
       </Stack>
     </Container>
-  )
+    </>
+)
+}
 
   export default Register;

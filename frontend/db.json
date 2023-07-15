@@ -1918,5 +1918,52 @@
       "category": "Footwear",
       "id": 140
     }
+  ],
+  "cart": [
+    {
+      "image_url": "https://bit.ly/3wYoUqM",
+      "brand": "Anouk",
+      "para": "Women Black Pure Cotton Ethnic Motifs Printed Kurta with Palazzos & Dupatta",
+      "rs": 1035,
+      "price": "Rs. 1035",
+      "strikedoffprice": "Rs. 2799",
+      "offer": "(63% OFF)",
+      "wishList": "WISHLIST ♡",
+      "rating": 2,
+      "id": 7,
+      "addToBag": "ADD TO BAG"
+    },
+    {
+      "id": 74,
+      "brand": "HRX",
+      "image_url": "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/2314372/2018/6/19/29e8ddfd-6f5f-43fd-8b71-dfa8ac6cef681529385860869-HRX-by-Hrithik-Roshan-Men-Charcoal-Grey-Slim-Advanced-Rapid--1.jpg",
+      "para": "Ultralyte Men Running T-shirt",
+      "price": 800,
+      "discount": 20,
+      "oldprice": 1000,
+      "rating": 4
+    },
+    {
+      "image_url": "https://bit.ly/3IRLbJa",
+      "brand": "MFB",
+      "para": "Women Maroon Analogue Watch MFB-PN-SNT-C30-1",
+      "rs": 674,
+      "price": "Rs. 674",
+      "strikedoffprice": "Rs. 1499",
+      "offer": "(65% OFF)",
+      "wishList": "WISHLIST ♡",
+      "rating": 4,
+      "id": 6,
+      "addToBag": "ADD TO BAG"
+    }
+  ],
+  "myntra_users": [
+    {
+      "name": "Gaurav Pardeshi",
+      "email": "gauravpardeshi068@gmail.com",
+      "password": "101010",
+      "mobile_no": "9696969696",
+      "id": 1
+    }
   ]
 }

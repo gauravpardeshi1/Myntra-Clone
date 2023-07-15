@@ -26,8 +26,8 @@ export const CartProductMeta = (props) => {
       />
       <Box pt="4">
         <Stack spacing="0.5">
-          <Text fontWeight="medium">{name}</Text>
-          <Text color={mode('gray.600', 'gray.400')} fontSize="sm">
+          <Text textAlign={'left'} fontWeight="medium">{name.slice(0, 15)}</Text>
+          <Text textAlign={'left'} color={mode('gray.600', 'gray.400')} fontSize="sm">
             #{description}
           </Text>
         </Stack>

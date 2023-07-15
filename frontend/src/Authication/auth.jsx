@@ -10,14 +10,74 @@ import {
     HStack,
     Input,
     Stack,
+    useMergeRefs,
+    InputRightElement,
     Image,
+    IconButton,
+    InputGroup,
     Text,
+    useDisclosure,
   } from '@chakra-ui/react'
-  
+  import { forwardRef, useEffect, useRef, useState } from 'react'
+  import { HiEye, HiEyeOff } from 'react-icons/hi'
+  import toast, { Toaster } from 'react-hot-toast';
   import { OAuthButtonGroup } from './authbutton'
+
   import { PasswordField } from './passwordfield'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from '../Redux/action';
   
-   const Login = () => (
+   const Login = () => {
+    const[email,setemail]=useState('')
+    const[password,setpassword]=useState('')
+
+    const { isOpen, onToggle } = useDisclosure()
+   const inputRef = useRef<HTMLInputElement>(null)
+ 
+   const mergeRef = useMergeRefs(inputRef)
+   const onClickReveal = () => {
+     onToggle()
+     if (inputRef.current) {
+       inputRef.current.focus({ preventScroll: true })
+     }
+   }
+   
+   const navigate=useNavigate()
+   const dispatch=useDispatch()
+   const { users } = useSelector((state) => state.products);
+
+   const HandleSubmit=(e)=>{
+ e.preventDefault()
+ setemail('')
+ setpassword('')
+ let flag=false;
+ for(let i=0; i<users.length; i++){
+  if(email==users[i].email && password==users[i].password){
+    flag=true;
+    break;
+  }
+ }
+ if(flag){
+  toast.success('Login Successfully !!')
+  navigate('/')
+ }else{
+  toast.error("Wrong Credentials")
+ }
+ 
+
+ 
+ 
+ 
+//  navigate('/')
+   }
+
+   useEffect(()=>{
+    dispatch(getUser)
+   },[])
+    return (
+      <>
+      <Toaster/>
     <Container   maxW="lg" py={{ base: '12', md: '24' }} px={{ base: '0', sm: '8' }}>
       <Stack spacing="8">
         <Stack spacing="6">
@@ -42,9 +102,31 @@ import {
             <Stack spacing="5">
               <FormControl >
                 <FormLabel htmlFor="email">Email</FormLabel>
-                <Input id="email" type="email" />
+                <Input id="email" type="email" value={email} onChange={(e)=>setemail(e.target.value)} />
               </FormControl>
-              <PasswordField />
+              <FormControl>
+        <FormLabel htmlFor="password">Password</FormLabel>
+        <InputGroup>
+          <InputRightElement>
+            <IconButton
+              variant="link"
+              aria-label={isOpen ? 'Mask password' : 'Reveal password'}
+              icon={isOpen ? <HiEyeOff /> : <HiEye />}
+              onClick={onClickReveal}
+            />
+          </InputRightElement>
+          <Input
+            id="password"
+           
+            name="password"
+            type={isOpen ? 'text' : 'password'}
+            autoComplete="current-password"
+            required
+           value={password} 
+           onChange={(e)=>setpassword(e.target.value)}
+          />
+        </InputGroup>
+      </FormControl>
             </Stack>
             <HStack justify="space-between">
               <Checkbox defaultChecked>Remember me</Checkbox>
@@ -53,7 +135,7 @@ import {
               </Button>
             </HStack>
             <Stack spacing="6">
-              <Button bg='#ff3f6c' color='white' _hover={{cursor:"pointer"}}>CONTINUE</Button>
+              <Button bg='#ff3f6c' color='white' _hover={{cursor:"pointer"}} onClick={HandleSubmit}>CONTINUE</Button>
               <HStack>
                 <Divider />
                 <Text fontSize="sm" whiteSpace="nowrap" color="muted">
@@ -67,6 +149,8 @@ import {
         </Box>
       </Stack>
     </Container>
-  )
+    </>
+    )
+   }
 
   export default Login;

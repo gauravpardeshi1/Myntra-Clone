@@ -34,6 +34,8 @@ import { BsFillPersonFill } from "react-icons/bs"
 import { useNavigate } from "react-router-dom";
 
 import { useEffect, useState } from 'react';
+import { getToCart } from '../Redux/action';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 
@@ -42,9 +44,12 @@ export default function WithSubnavigation() {
     const [wish, setwish] = useState([])
     const [update, setupdate] = useState(false)
 
-
+    const dispatch =useDispatch()
+	const { cart } = useSelector((state) => state.products);
     let navigate = useNavigate();
-
+  useEffect(()=>{
+    dispatch(getToCart)
+  },[])
 
     return (
         <>
@@ -122,7 +127,7 @@ export default function WithSubnavigation() {
                                 navigate("/cart")
                                 setupdate(!update)
 
-                            }}  _hover={{ cursor: "pointer" }} display="flex" alignItems={"center"}> <BiShoppingBag size={25} /><Text textAlign={"center"} background="#FA4279" borderRadius={"52%"} marginTop={"-10px"} marginLeft={"-6px"} width="20px" height="20px" fontSize={14} color="white" fontWeight={600}>0</Text></Box>
+                            }}  _hover={{ cursor: "pointer" }} display="flex" alignItems={"center"}> <BiShoppingBag size={25} /><Text textAlign={"center"} background="#FA4279" borderRadius={"52%"} marginTop={"-10px"} marginLeft={"-6px"} width="20px" height="20px" fontSize={14} color="white" fontWeight={600}>{cart.length}</Text></Box>
                         </Tooltip>
 
 

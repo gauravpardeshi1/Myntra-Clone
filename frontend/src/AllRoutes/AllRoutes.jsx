@@ -12,6 +12,8 @@ import Cart from '../pages/cart'
 import LoadingSpinner from '../component/Spinner/Spinner'
 import Kids from '../pages/Kids'
 
+
+
 const AllRoutes = () => {
   return (
     <Routes>
@@ -25,6 +27,7 @@ const AllRoutes = () => {
       <Route path='/success' element={<ConfirmOrder/>}/>
       <Route path='/details/:id' element={<Simple/>}/>
       <Route path='/cart' element={<Cart/>} />
+      
     
       
     </Routes>

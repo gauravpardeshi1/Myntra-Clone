@@ -48,24 +48,16 @@ export default function Checkout({ total, cartData }) {
 				isClosable: true,
 			});
 		} else {
-			toast({
-				title: "Address Added",
-				description: "Your address has been added",
-				status: "success",
-				duration: 1000,
-				isClosable: true,
-			});
+			// toast({
+			// 	title: "Address Added",
+			// 	description: "Your address has been added",
+			// 	status: "success",
+			// 	duration: 1000,
+			// 	isClosable: true,
+			// });
 
-			onClose();
-			setData({
-				pincode: "",
-				house: "",
-				area: "",
-			});
-
-			navigate("/product/cart/payment", {
-				state: { address: data, cartData, total },
-			});
+		
+			navigate("/success");
 			
 		}
 	};

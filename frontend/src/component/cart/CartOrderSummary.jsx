@@ -22,6 +22,11 @@ const OrderSummaryItem = (props) => {
 };
 
 export const CartOrderSummary = ({ total, cart }) => {
+	let Total=0;
+	for(let i=0; i<cart.length; i++){
+		Total+=cart[i].rs || cart[i].price
+	}
+	console.log('t',Total);
 	return (
 		<Stack
 			spacing='8'
@@ -32,7 +37,7 @@ export const CartOrderSummary = ({ total, cart }) => {
 			<Heading size='md'>Order Summary</Heading>
 
 			<Stack spacing='6'>
-				<OrderSummaryItem label='Subtotal' value={formatPrice(total)} />
+				<OrderSummaryItem label='Subtotal' value={formatPrice(Total)} />
 				<OrderSummaryItem label='Shipping + Tax'>
 					<Link href='#' textDecor='underline'>
 						Calculate shipping
@@ -48,11 +53,11 @@ export const CartOrderSummary = ({ total, cart }) => {
 						Total
 					</Text>
 					<Text fontSize='xl' fontWeight='extrabold'>
-						{formatPrice(total)}
+						{formatPrice(Total)}
 					</Text>
 				</Flex>
 			</Stack>
-			<Checkout total={total} cartData={cart} />
+			<Checkout total={Total} cartData={cart} />
 		</Stack>
 	);
 };

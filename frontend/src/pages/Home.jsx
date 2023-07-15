@@ -35,7 +35,7 @@ const Home = () => {
                     <Heading fontWeight={600} mb='50px'  >DEALS OF THE DAY</Heading>
 
                     <Box >
-                        <SimpleGrid columns={{ sm: 2, md: 3, lg: 7 }} gap='10px'>
+                        <SimpleGrid columns={{ base:2, sm: 2, md: 3, lg: 7 }} gap='10px'>
                             {deals.map((e) => <Image src={e.image_url} _hover={{ transform: "scale(0.95)", transition: "all .5s", cursor: "pointer" }} />)}
                         </SimpleGrid>
 

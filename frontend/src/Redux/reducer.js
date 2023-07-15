@@ -8,6 +8,7 @@ const initialState = {
 	funitureData:[],
 	cart: [],
 	kids:[],
+	users:[],
 	total: 0,
 	auth: false,
 	name:""
@@ -103,6 +104,41 @@ export const reducer = (state = initialState, { type, payload }) => {
 						...state,
 						loading: false,
 						error: true,
+					};
+					case types.GET_TO_CART:
+					return {
+						...state,
+						loading: false,
+						cart:payload
+					
+					};
+					case types.ADD_TO_CART:
+					return {
+						...state,
+						loading: false,
+					
+					
+					};
+					case types.DELETE_TO_CART:
+					return {
+						...state,
+						loading: false,
+					
+					
+					};
+					case types.ADD_USER:
+					return {
+						...state,
+						loading: false,
+					
+					
+					};
+					case types.GET_USER:
+					return {
+						...state,
+						loading: false,
+						users:payload
+					
 					};
 		default:
 			return state;
