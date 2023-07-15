@@ -1,9 +1,10 @@
 import * as types from "./actiontypes";
 import axios from "axios";
 const URL = "https://obtainable-gray-tenor.glitch.me/allproducts";
-const MENS_URL='http://localhost:8080/productData'
+const MENS_URL='http://localhost:8080/mensproducts'
 const WOMEN_URL='http://localhost:8080/womensdata'
 const FUNITURE_URL='http://localhost:8080/funitureData'
+const KIDS_URL='http://localhost:8080/kids'
 export const getProduct = (params) => (dispatch) => {
 	dispatch({ type: types.GET_PRODUCT_REQUEST });
 	axios
@@ -18,10 +19,25 @@ export const getProduct = (params) => (dispatch) => {
 		});
 };
 
-export const getMensProduct =(dispatch) => {
+export const getKidsProduct =(page,obj)=>(dispatch) => {
+	dispatch({ type: types.GET_KIDS_PRODUCT_REQUEST });
+	axios
+		.get(`${KIDS_URL}?_page=${page}&_limit=9`,obj)
+		.then((res) => {
+			
+			dispatch({ type: types.GET_KIDS_PRODUCT_SUCCESS, payload: res.data });
+		})
+		.catch((err) => {
+			dispatch({ type: types.GET_KIDS_PRODUCT_FAILURE});
+		});
+};
+
+
+
+export const getMensProduct =(page,obj)=>(dispatch) => {
 	dispatch({ type: types.GET_MENS_PRODUCT_REQUEST });
 	axios
-		.get(`${MENS_URL}?_page=${1}&_limit=9`)
+		.get(`${MENS_URL}?_page=${page}&_limit=9`,obj)
 		.then((res) => {
 			
 			dispatch({ type: types.GET_MENS_PRODUCT_SUCCESS, payload: res.data });
@@ -30,10 +46,10 @@ export const getMensProduct =(dispatch) => {
 			dispatch({ type: types.GET_FUNITURE_PRODUCT_FAILURE});
 		});
 };
-export const getWomenProduct=(page,order)=>(dispatch) => {
+export const getWomenProduct=(page,obj)=>(dispatch) => {
 	dispatch({ type: types.GET_WOMENS_PRODUCT_REQUEST });
 	axios
-		.get(`${WOMEN_URL}?_page=${page}&_limit=9&_sort=price&_order=${order}`)
+		.get(`${WOMEN_URL}?_page=${page}&_limit=9`,obj)
 		.then((res) => {
 			
 			dispatch({ type: types.GET_WOMENS_PRODUCT_SUCCESS, payload: res.data });
@@ -43,17 +59,14 @@ export const getWomenProduct=(page,order)=>(dispatch) => {
 		});
 };
 
-export const getfunitureProduct=(page,order)=>(dispatch) => {
-	let FUNITURE_URL;
-	 if(order){
-		FUNITURE_URL=`http://localhost:8080/funitureData?_page=${page}&_limit=9&_sort=rs&_order=${order}`
-	}else{
-		FUNITURE_URL=`http://localhost:8080/funitureData?_page=${page}&_limit=9`
-	}
+export const getfunitureProduct=(page,obj)=>(dispatch) => {
+	
+		const FUNITURE_URL=`http://localhost:8080/funitureData?_page=${page}&_limit=9`
+	
 	console.log(FUNITURE_URL);
 	dispatch({ type: types.GET_FUNITURE_PRODUCT_REQUEST });
 	axios
-		.get(`${FUNITURE_URL}`)
+		.get(`http://localhost:8080/funitureData?_page=${page}&_limit=9`,obj)
 		.then((res) => {
 			
 			dispatch({ type: types.GET_FUNITURE_PRODUCT_SUCCESS, payload: res.data });

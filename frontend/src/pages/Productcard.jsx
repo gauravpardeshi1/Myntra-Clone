@@ -144,7 +144,7 @@ export function ProductCard({
 							fontWeight='bold'
 							bg={useColorModeValue("yellow.100", "yellow.200")}
 							letterSpacing={0}>
-							₹{rs}
+							₹{rs || price}
 						</Code>
 					</Flex>
 					<Button

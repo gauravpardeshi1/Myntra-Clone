@@ -22,9 +22,10 @@ import { useEffect, useState } from 'react';
   import { MdLocalShipping } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
+import LoadingSpinner from '../component/Spinner/Spinner';
 
   export default function Simple() {
-    const [loading, setloading] = useState(false);
+    const [loading, setloading] = useState(true);
   const [data, setdata] = useState({});
   const { id } = useParams('');
  
@@ -36,8 +37,10 @@ import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
             url=`http://localhost:8080/womensdata/${id}`
         }else if(id>=36 && id<72){
            url=`http://localhost:8080/funitureData/${id}`
-        }else if(id>=72){
-            url=`http://localhost:8080/productData/${id}`
+        }else if(id>=72 && id<103){
+            url=`http://localhost:8080/mensproducts/${id}`
+        }else if(id>=103){
+          url=`http://localhost:8080/kids/${id}`
         }
         axios
       .get(url)
@@ -50,6 +53,9 @@ import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
   };
  // console.log("dataPrrr",data)
   useEffect(() => {
+    setTimeout(() => {
+      setloading(false)
+    }, 1000);
     pro();
   }, []);
 
@@ -98,7 +104,12 @@ import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 		</Box>
 	);
 }
+
+
+
     return (
+      <> 
+      {loading ? <LoadingSpinner/>:
       <Container maxW={'7xl'}>
         <SimpleGrid
           columns={{ base: 1, lg: 2 }}
@@ -132,7 +143,7 @@ data.image_url              }
                 mt='10px'
                 textAlign={'left'}
                 fontSize={'2xl'}>
-                Price : ₹{data.rs}
+                Price : ₹{data.rs || data.price}
               </Text>
               <Rating rating={4} numReviews={50*4} />
             </Box>
@@ -142,12 +153,12 @@ data.image_url              }
               direction={'column'}
               divider={
                 <StackDivider
-                  borderColor={useColorModeValue('gray.200', 'gray.600')}
+                  borderColor='gray.600'
                 />
               }>
               <VStack spacing={{ base: 4, sm: 6 }}>
                 <Text
-                  color={useColorModeValue('gray.500', 'gray.400')}
+                  color='gray.400'
                   fontSize={'2xl'}
                   fontWeight={'300'}>
                   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
@@ -163,7 +174,7 @@ data.image_url              }
               <Box>
                 <Text
                   fontSize={{ base: '16px', lg: '18px' }}
-                  color={useColorModeValue('yellow.500', 'yellow.300')}
+                  color='yellow.500'
                   fontWeight={'500'}
                   textTransform={'uppercase'}
                   mb={'4'}>
@@ -192,12 +203,14 @@ data.image_url              }
               mt={8}
               size={'lg'}
               py={'7'}
-              bg={useColorModeValue('gray.900', 'gray.50')}
-              color={useColorModeValue('white', 'gray.900')}
+              bg={'gray.600'}
+              color={'white'}
               textTransform={'uppercase'}
               _hover={{
                 transform: 'translateY(2px)',
                 boxShadow: 'lg',
+                background:'gray.700',
+                color:'white'
               }}>
               Add to cart
             </Button>
@@ -208,6 +221,8 @@ data.image_url              }
             </Stack>
           </Stack>
         </SimpleGrid>
-      </Container>
+      </Container>}
+      </>
     );
+            
   }

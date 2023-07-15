@@ -7,6 +7,7 @@ const initialState = {
     womensproducts: [],
 	funitureData:[],
 	cart: [],
+	kids:[],
 	total: 0,
 	auth: false,
 	name:""
@@ -80,6 +81,24 @@ export const reducer = (state = initialState, { type, payload }) => {
 					
 					};
 				case types.GET_MENS_PRODUCT_FAILURE:
+					return {
+						...state,
+						loading: false,
+						error: true,
+					};
+					case types.GET_KIDS_PRODUCT_REQUEST:
+					return {
+						...state,
+						loading: true,
+					};
+				case types.GET_KIDS_PRODUCT_SUCCESS:
+					return {
+						...state,
+						loading: false,
+						kids: payload,
+					
+					};
+				case types.GET_KIDS_PRODUCT_FAILURE:
 					return {
 						...state,
 						loading: false,

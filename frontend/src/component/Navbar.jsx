@@ -314,7 +314,7 @@ const NAV_ITEMS = [
                     { sub: "Co-ord sets" }
                 ],
 
-                href: '/product',
+                href: '/mens',
             }
             , {
                 label: 'Brands',
@@ -330,7 +330,7 @@ const NAV_ITEMS = [
 
 
                 ],
-                href: '/product',
+                href: '/mens',
             },
             {
                 label: 'Footwear',
@@ -340,7 +340,7 @@ const NAV_ITEMS = [
                     { sub: "Slides" }
 
                 ],
-                href: '/product',
+                href: '/mens',
             },
             {
                 label: 'Accessories',
@@ -350,7 +350,7 @@ const NAV_ITEMS = [
                     { sub: "Pins" }
 
                 ],
-                href: '/product',
+                href: '/mens',
             }
         ], href: '/mens',
 
@@ -371,7 +371,7 @@ const NAV_ITEMS = [
                     { sub: "Co-ord sets" }
                 ],
 
-                href: '/product',
+                href: '/womens',
             }
             , {
                 label: 'Brands',
@@ -387,7 +387,7 @@ const NAV_ITEMS = [
 
 
                 ],
-                href: '/product',
+                href: '/womens',
             },
             {
                 label: 'Footwear',
@@ -397,7 +397,7 @@ const NAV_ITEMS = [
                     { sub: "Slides" }
 
                 ],
-                href: '/product',
+                href: '/womens',
             },
             {
                 label: 'Accessories',
@@ -407,14 +407,14 @@ const NAV_ITEMS = [
                     { sub: "Pins" }
 
                 ],
-                href: '#',
+                href: '/womens',
             }
         ], href: '/womens',
 
     },
     {
         label: 'KIDS',
-        href: '/product',
+        href: '/kids',
         children: [
             {
 
@@ -422,14 +422,14 @@ const NAV_ITEMS = [
                     { sub: "George Thomasam" },
                     { sub: "Boomrang" },
                 ],
-                href: '/product',
+                href: '/kids',
             },
 
-        ],
+        ],href: '/kids',
     },
     {
         label: 'HOME & LIVING',
-        href: '#',
+        href: '/funiture',
         children: [
             {
 
@@ -441,7 +441,7 @@ const NAV_ITEMS = [
                     { sub: "Rectograde" },
                     { sub: "Fill Grade" }
                 ],
-                href: '/product',
+                href: '/funiture',
             },
 
         ],href:'/funiture'
