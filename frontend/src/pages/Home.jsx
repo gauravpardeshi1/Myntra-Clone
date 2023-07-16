@@ -12,15 +12,15 @@ const Home = () => {
  
 
     const getdata = () => {
-        axios.get(`http://localhost:8080/Deals`)
+        axios.get(`https://childish-nonchalant-gold.glitch.me/Deals`)
             .then((res) => setdeals(res.data))
-            axios.get(`http://localhost:8080/ExclusiveBrands`)
+            axios.get(`https://childish-nonchalant-gold.glitch.me/ExclusiveBrands`)
             .then((res) => setExclusive(res.data))
-            axios.get(`http://localhost:8080/top`)
+            axios.get(`https://childish-nonchalant-gold.glitch.me/top`)
             .then((res) => settop(res.data))
-            axios.get(`http://localhost:8080/category`)
+            axios.get(`https://childish-nonchalant-gold.glitch.me/category`)
             .then((res) => setcategory(res.data))
-            axios.get(`http://localhost:8080/topdeals`)
+            axios.get(`https://childish-nonchalant-gold.glitch.me/topdeals`)
             .then((res) => settopdealse(res.data))
     }
     //console.log(deals);
