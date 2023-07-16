@@ -10,8 +10,9 @@ const initialState = {
 	kids:[],
 	users:[],
 	total: 0,
-	auth: false,
+	auth: 0,
 	name:""
+
 };
 export const reducer = (state = initialState, { type, payload }) => {
 	switch (type) {
@@ -140,6 +141,16 @@ export const reducer = (state = initialState, { type, payload }) => {
 						users:payload
 					
 					};
+					case types.AUTH_TRUE:
+						return{
+                        ...state,
+						auth:payload
+					}
+					case types.USER_LOGOUT:
+						return{
+							...state,
+							auth:payload
+						}
 		default:
 			return state;
 	}

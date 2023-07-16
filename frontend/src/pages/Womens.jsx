@@ -92,7 +92,7 @@ const Womens = () => {
         <h1>Something is wrong</h1>
     ) : (
         <>
-            <Box w='90%' margin='auto' display="flex" justifyContent="space-between" mt='30px' padding='10px'>
+            <Box w={{base:'100%',sm:'100%',lg:'90%'}} margin='auto' display="flex" justifyContent={{base:'space-evenly',sm:'space-evenly',lg:"space-between"}} mt='30px' padding='10px'>
                 <Stack direction='row'><Text fontSize={24} color='gray' fontWeight={500} _hover={{ cursor: 'pointer', color: 'red.400' }}>Home/</Text><Text fontSize={24} color='gray' fontWeight={500} _hover={{ cursor: 'pointer', color: 'red.400' }}>Womens Products </Text></Stack>
                 <Box w='20%'><Select _hover={{ cursor: 'pointer', color: 'blue.500' }} placeholder='sort by : Recommended'>
 

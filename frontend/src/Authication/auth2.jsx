@@ -137,8 +137,8 @@ return (
               <Button bg='#ff3f6c' color='white' _hover={{cursor:"pointer"}} onClick={HandleSubmit} >CONTINUE</Button>
               <HStack>
                 <Divider />
-                <Text fontSize="sm" whiteSpace="nowrap" color="muted">
-                  or continue with
+                <Text  _hover={{color:'blue',cursor:'pointer'}} onClick={()=>navigate('/login')} fontSize="sm" whiteSpace="nowrap" color="muted">
+                  Already have an account
                 </Text>
                 <Divider />
               </HStack>

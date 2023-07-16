@@ -27,6 +27,7 @@ import {
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../Redux/action';
+import { AUTH_TRUE } from '../Redux/actiontypes';
   
    const Login = () => {
     const[email,setemail]=useState('')
@@ -60,6 +61,7 @@ import { getUser } from '../Redux/action';
  }
  if(flag){
   toast.success('Login Successfully !!')
+  dispatch({type:AUTH_TRUE,payload:true})
   navigate('/')
  }else{
   toast.error("Wrong Credentials")
@@ -138,8 +140,8 @@ import { getUser } from '../Redux/action';
               <Button bg='#ff3f6c' color='white' _hover={{cursor:"pointer"}} onClick={HandleSubmit}>CONTINUE</Button>
               <HStack>
                 <Divider />
-                <Text fontSize="sm" whiteSpace="nowrap" color="muted">
-                  or continue with
+                <Text _hover={{color:'blue',cursor:'pointer'}} onClick={()=>navigate('/signup')} fontSize="sm" whiteSpace="nowrap" color="muted">
+                  Create an account
                 </Text>
                 <Divider />
               </HStack>

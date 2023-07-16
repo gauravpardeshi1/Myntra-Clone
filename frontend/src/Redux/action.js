@@ -1,12 +1,12 @@
 import * as types from "./actiontypes";
 import axios from "axios";
 const URL = "https://obtainable-gray-tenor.glitch.me/allproducts";
-const MENS_URL='http://localhost:8080/mensproducts'
-const WOMEN_URL='http://localhost:8080/womensdata'
-const FUNITURE_URL='http://localhost:8080/funitureData'
-const KIDS_URL='http://localhost:8080/kids'
-const CART_URL='http://localhost:8080/cart'
-const USER_URL='http://localhost:8080/myntra_users'
+const MENS_URL = 'http://localhost:8080/mensproducts'
+const WOMEN_URL = 'http://localhost:8080/womensdata'
+const FUNITURE_URL = 'http://localhost:8080/funitureData'
+const KIDS_URL = 'http://localhost:8080/kids'
+const CART_URL = 'http://localhost:8080/cart'
+const USER_URL = 'http://localhost:8080/myntra_users'
 export const getProduct = (params) => (dispatch) => {
 	dispatch({ type: types.GET_PRODUCT_REQUEST });
 	axios
@@ -21,107 +21,107 @@ export const getProduct = (params) => (dispatch) => {
 		});
 };
 
-export const getKidsProduct =(page,obj)=>(dispatch) => {
+export const getKidsProduct = (page, obj) => (dispatch) => {
 	dispatch({ type: types.GET_KIDS_PRODUCT_REQUEST });
 	axios
-		.get(`${KIDS_URL}?_page=${page}&_limit=9`,obj)
+		.get(`${KIDS_URL}?_page=${page}&_limit=9`, obj)
 		.then((res) => {
-			
+
 			dispatch({ type: types.GET_KIDS_PRODUCT_SUCCESS, payload: res.data });
 		})
 		.catch((err) => {
-			dispatch({ type: types.GET_KIDS_PRODUCT_FAILURE});
+			dispatch({ type: types.GET_KIDS_PRODUCT_FAILURE });
 		});
 };
 
 
 
-export const getMensProduct =(page,obj)=>(dispatch) => {
+export const getMensProduct = (page, obj) => (dispatch) => {
 	dispatch({ type: types.GET_MENS_PRODUCT_REQUEST });
 	axios
-		.get(`${MENS_URL}?_page=${page}&_limit=9`,obj)
+		.get(`${MENS_URL}?_page=${page}&_limit=9`, obj)
 		.then((res) => {
-			
+
 			dispatch({ type: types.GET_MENS_PRODUCT_SUCCESS, payload: res.data });
 		})
 		.catch((err) => {
-			dispatch({ type: types.GET_FUNITURE_PRODUCT_FAILURE});
+			dispatch({ type: types.GET_FUNITURE_PRODUCT_FAILURE });
 		});
 };
-export const getWomenProduct=(page,obj)=>(dispatch) => {
+export const getWomenProduct = (page, obj) => (dispatch) => {
 	dispatch({ type: types.GET_WOMENS_PRODUCT_REQUEST });
 	axios
-		.get(`${WOMEN_URL}?_page=${page}&_limit=9`,obj)
+		.get(`${WOMEN_URL}?_page=${page}&_limit=9`, obj)
 		.then((res) => {
-			
+
 			dispatch({ type: types.GET_WOMENS_PRODUCT_SUCCESS, payload: res.data });
 		})
 		.catch((err) => {
-			dispatch({ type: types.GET_WOMENS_PRODUCT_FAILURE});
+			dispatch({ type: types.GET_WOMENS_PRODUCT_FAILURE });
 		});
 };
 
-export const getfunitureProduct=(page,obj)=>(dispatch) => {
-	
-		const FUNITURE_URL=`http://localhost:8080/funitureData?_page=${page}&_limit=9`
-	
+export const getfunitureProduct = (page, obj) => (dispatch) => {
+
+
+
 	console.log(FUNITURE_URL);
 	dispatch({ type: types.GET_FUNITURE_PRODUCT_REQUEST });
 	axios
-		.get(`http://localhost:8080/funitureData?_page=${page}&_limit=9`,obj)
+		.get(FUNITURE_URL, obj)
 		.then((res) => {
-			
+
 			dispatch({ type: types.GET_FUNITURE_PRODUCT_SUCCESS, payload: res.data });
 		})
 		.catch((err) => {
-			dispatch({ type: types.GET_FUNITURE_PRODUCT_FAILURE});
+			dispatch({ type: types.GET_FUNITURE_PRODUCT_FAILURE });
 		});
 };
 
 
 
-export const addToCart=(data)=>(dispatch)=>{
-	axios.post(CART_URL,data)
-	.then(() => {
-			
-		dispatch({ type: types.ADD_TO_CART});
-	})
-	
+export const addToCart = (data) => (dispatch) => {
+	axios.post(CART_URL, data)
+		.then(() => {
+
+			dispatch({ type: types.ADD_TO_CART });
+		})
+
 }
 
-export const deleteToCart=(id)=>(dispatch)=>{
+export const deleteToCart = (id) => (dispatch) => {
 	axios.delete(`${CART_URL}/${id}`)
-	.then(() => {
-			
-		dispatch({ type: types.DELETE_TO_CART});
-	})
-	
+		.then(() => {
+
+			dispatch({ type: types.DELETE_TO_CART });
+		})
+
 }
-export const getToCart=(dispatch)=>{
+export const getToCart = (dispatch) => {
 	axios.get(CART_URL)
-	.then((res) => {
-			
-		dispatch({ type: types.GET_TO_CART, payload: res.data });
-	})
-	
+		.then((res) => {
+
+			dispatch({ type: types.GET_TO_CART, payload: res.data });
+		})
+
 }
 
-export const addUser=(data)=>(dispatch)=>{
-	axios.post(USER_URL,data)
-	.then(() => {
-			
-		dispatch({ type: types.ADD_USER});
-	})
-	
+export const addUser = (data) => (dispatch) => {
+	axios.post(USER_URL, data)
+		.then(() => {
+
+			dispatch({ type: types.ADD_USER });
+		})
+
 }
 
-export const getUser=(dispatch)=>{
+export const getUser = (dispatch) => {
 	axios.get(USER_URL)
-	.then((res) => {
-			
-		dispatch({ type: types.GET_USER, payload: res.data });
-	})
-	
+		.then((res) => {
+
+			dispatch({ type: types.GET_USER, payload: res.data });
+		})
+
 }
 
 

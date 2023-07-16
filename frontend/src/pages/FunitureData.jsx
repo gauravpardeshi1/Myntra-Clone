@@ -92,8 +92,8 @@ const Funiture = () => {
         <h1>Something is wrong</h1>
     ) : (
         <>
-            <Box w='90%' margin='auto' display="flex" justifyContent="space-between" mt='30px' padding='10px'>
-                <Stack direction='row'><Text fontSize={24} color='gray' fontWeight={500} _hover={{ cursor: 'pointer', color: 'red.400' }}>Home/</Text><Text fontSize={24} color='gray' fontWeight={500} _hover={{ cursor: 'pointer', color: 'red.400' }}>Furniture Products </Text></Stack>
+            <Box w={{base:'100%',sm:'100%',lg:'90%'}} margin='auto' display="flex" justifyContent={{ sm: 'space-evenly', lg: 'space-between' }} mt='30px' padding='10px'>
+                <Stack spacing={1} direction='row'><Text fontSize={24} color='gray' fontWeight={500} _hover={{ cursor: 'pointer', color: 'red.400' }}>Home/</Text><Text fontSize={24} color='gray' fontWeight={500} _hover={{ cursor: 'pointer', color: 'red.400' }}>Furniture Products</Text></Stack>
                 <Box w='20%'><Select _hover={{ cursor: 'pointer', color: 'blue.500' }} placeholder='sort by : Recommended'>
 
                     <option value='option1'>Recommended</option>
@@ -105,8 +105,8 @@ const Funiture = () => {
                 </Select></Box>
 
             </Box>
-            <Box w='90%' margin='auto' display={'flex'} justifyContent={'space-between'} mt={'10px'}>
-                <Box w='25%'>
+            <Box w={{base:'100%',sm:'100%',lg:'90%'}} margin='auto' display={'flex'} justifyContent={'space-between'} mt={'10px'}>
+                <Box w={{ base: '39%', sm: '39%', lg: '25%' }}>
                     <Box w='100%' boxShadow='rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px' h='auto' mt={6} padding='20px'  >
                         {/* <Heading>FILTERS</Heading> */}
                         <Heading fontSize={20} textAlign={'left'}>FILTERS</Heading>

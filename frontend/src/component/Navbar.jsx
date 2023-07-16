@@ -36,6 +36,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { getToCart } from '../Redux/action';
 import { useDispatch, useSelector } from 'react-redux';
+import { USER_LOGOUT } from '../Redux/actiontypes';
 
 
 
@@ -45,7 +46,8 @@ export default function WithSubnavigation() {
     const [update, setupdate] = useState(false)
 
     const dispatch =useDispatch()
-	const { cart } = useSelector((state) => state.products);
+	const { cart,auth } = useSelector((state) => state.products);
+  console.log('auth',auth)
     let navigate = useNavigate();
   useEffect(()=>{
     dispatch(getToCart)
@@ -113,7 +115,16 @@ export default function WithSubnavigation() {
                         {/* </Tooltip> */}
 
                         <Tooltip hasArrow label='Account' bg='gray.300' color='black'>
-                            <Box paddingTop={"7px"} onClick={() => navigate("/login")} _hover={{ cursor: "pointer" }}><BsFillPersonFill size={25} /></Box>
+                      {/* {auth==1 || auth==0? <Button onClick={()=>dispatch({type:USER_LOGOUT,payload:2})}>Logout</Button>:auth==2 || auth==0 ? */}
+                      
+                      <Box paddingTop={"7px"} onClick={() => navigate("/login")} _hover={{ cursor: "pointer" }}>
+                                
+                                <BsFillPersonFill size={25} />
+                     
+
+                            </Box>
+                            {/* :<Button>Hello</Button>} */}
+                           
                         </Tooltip>
                         <Tooltip hasArrow label='Wishlist' bg='gray.300' color='black'>
                             <Box onClick={() => {

@@ -4,20 +4,31 @@ import React, { useEffect, useState } from 'react'
 
 import Confetti from 'react-confetti'
 import { useNavigate } from 'react-router-dom'
+import LoadingSpinner from '../component/Spinner/Spinner'
 const ConfirmOrder = () => {
   const [loading,setloading]=useState(true)
+const[spinner,setspinner]=useState(true)
 
   useEffect(()=>{
+    setTimeout(() => {
+      setspinner(false)
+    }, 1500);
     setTimeout(() => {
       setloading(false)
     }, 5000);
   },[loading])
   console.log('l',loading)
  const navigate=useNavigate()
+
+ if(spinner){
+  return (
+    <LoadingSpinner/>
+  )
+ }
   return (
     <div >
+     
     <Box width='50%' margin='auto'>
-
      {loading &&  <Confetti
       width={'1200%'}
       height={'1000%'}
@@ -40,6 +51,7 @@ const ConfirmOrder = () => {
 
    
     </Box> 
+    
     </div>
   )
 }

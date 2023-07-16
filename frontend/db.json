@@ -1955,6 +1955,44 @@
       "rating": 4,
       "id": 6,
       "addToBag": "ADD TO BAG"
+    },
+    {
+      "image_url": "https://bit.ly/36VAF6m",
+      "brand": "DREAM WEAVERZ",
+      "para": "300 TC Cotton 1 King BedSheet",
+      "rs": 623,
+      "price": "Rs. 623",
+      "strikedoffprice": "Rs. 2599",
+      "offer": "(65% OFF)",
+      "wishList": "WISHLIST",
+      "addToBag": "ADD TO BAG",
+      "rating": 5,
+      "id": 36
+    },
+    {
+      "image_url": "https://cdn.fcglcdn.com/brainbees/images/products/438x531/11862373a.webp",
+      "para": "Ed a Mamma Full Sleeves Color Blocked Sweatshirts - Off White",
+      "mrp": "1099",
+      "price": 879,
+      "color": "edece8",
+      "totimg": "3",
+      "brand": "Anthrilo",
+      "gender": "Boy",
+      "category": "T-shirts",
+      "id": 104
+    },
+    {
+      "image_url": "https://bit.ly/3uHGEnN",
+      "brand": "Anouk",
+      "para": "Women Pink Self Design Kurta with Trousers & Dupatta",
+      "rs": 791,
+      "price": "Rs. 791",
+      "strikedoffprice": "Rs. 3298",
+      "offer": "(76% OFF)",
+      "wishList": "WISHLIST ♡",
+      "rating": 4,
+      "id": 1,
+      "addToBag": "ADD TO BAG"
     }
   ],
   "myntra_users": [

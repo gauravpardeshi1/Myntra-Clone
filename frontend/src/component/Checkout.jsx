@@ -57,7 +57,7 @@ export default function Checkout({ total, cartData }) {
 			// });
 
 		
-			navigate("/success");
+			navigate("/payment");
 			
 		}
 	};
@@ -69,10 +69,10 @@ export default function Checkout({ total, cartData }) {
 				size='lg'
 				fontSize='md'
 				rightIcon={<FaArrowRight />}
-				onClick={onOpen}>
+				onClick={()=>navigate('/payment')}>
 				Checkout
 			</Button>
-			<Drawer isOpen={isOpen} placement='right' onClose={onClose}>
+			{/* <Drawer isOpen={isOpen} placement='right' onClose={onClose}>
 				<DrawerOverlay />
 				<DrawerContent>
 					<DrawerCloseButton />
@@ -124,7 +124,7 @@ export default function Checkout({ total, cartData }) {
 						</Button>
 					</DrawerFooter>
 				</DrawerContent>
-			</Drawer>
+			</Drawer> */}
 		</>
 	);
 }

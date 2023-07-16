@@ -3,6 +3,8 @@ import React, { useState } from "react";
 
 import CardReactFormContainer from "card-react";
 import "card-react/lib/card.css";
+import { Box, Button, Heading, Input } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 // import Plastic from "react-plastic";
 
@@ -12,6 +14,7 @@ export default function Payment() {
   const [expiry, setExpiry] = useState('');
   const [cvc, setCvc] = useState('');
 
+  const navigate =useNavigate()
   const changeName = (e) => {
     setName(e.target.value);
   };
@@ -27,7 +30,9 @@ export default function Payment() {
   };
 
   return (
-    <div className="App">
+    <> 
+  <Heading color='blue.700' mt='40px' fontWeight={500}>Procced To Your Payment</Heading>
+    <Box className="App" width={{base:'90%',lg:'60%'}} margin='auto' marginTop='40px'  marginBottom='30px' display={{lg:'flex'}} justifyContent={{lg:'space-evenly'}}>
       {/* <Plastic
         type="mastercard"
         name="Peter Sagan"
@@ -54,10 +59,10 @@ export default function Payment() {
         }}
         // initial values to render in the card element
         initialValues={{
-          number: " ", // optional — default •••• •••• •••• ••••
+          number: "4242424242424242", // optional — default •••• •••• •••• ••••
           cvc: " ", // optional — default •••
-          expiry: "16/12", // optional — default ••/••
-          name: "Random Name" // optional — default FULL NAME
+          expiry: " ", // optional — default ••/••
+          name: "Cardholder Name" // optional — default FULL NAME
         }}
         // the class name attribute to add to the input field and the corresponding part of the card element,
         // when the input is valid/invalid.
@@ -66,10 +71,10 @@ export default function Payment() {
           invalid: "invalid-input" // optional — default 'jp-card-invalid'
         }}
         // specify whether you want to format the form inputs or not
-        formatting={true} // optional - default true
+        formatting={false} // optional - default true
       >
         <form>
-          <input
+          <Input
             value={name}
             onChange={changeName}
             type="text"
@@ -78,7 +83,7 @@ export default function Payment() {
           />
           <br />
           <br />
-          <input
+          <Input
             value={number}
             onChange={changeNumber}
             type="text"
@@ -87,27 +92,31 @@ export default function Payment() {
           />
           <br />
           <br />
-          <input
+          <Input
             value={expiry}
             onChange={changeExpiry}
             type="text"
             name="CCexpiry"
-            placeholder="mm/yy"
+            placeholder="Enter mm/yy"
           />
           <br />
           <br />
-          <input
+          <Input
             value={cvc}
             onChange={changeCvv}
             type="text"
             name="CCcvc"
-            placeholder="Enter CVV here"
+            placeholder="Enter CVC here"
           />
           <br />
           <br />
-          <button>Submit</button>
+          <Box>
+
+          <Button onClick={()=>navigate('/success')} padding='10px 100px' _hover={{cursor:'pointer',bg:'green.500',color:'white'}}>Submit</Button>
+          </Box>
         </form>
       </CardReactFormContainer>
-    </div>
+    </Box>
+    </>
   );
 }

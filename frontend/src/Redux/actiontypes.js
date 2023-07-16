@@ -18,3 +18,5 @@ export const DELETE_TO_CART = "DELETE_TO_CART";
 export const GET_TO_CART = "GET_TO_CART";
 export const ADD_USER='ADD_USER'
 export const GET_USER='GET_USER'
+export const AUTH_TRUE='AUTH_TRUE'
+export const USER_LOGOUT='USER_LOGOUT'

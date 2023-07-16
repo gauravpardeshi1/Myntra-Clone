@@ -20,7 +20,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
   import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
   import { MdLocalShipping } from 'react-icons/md';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 import LoadingSpinner from '../component/Spinner/Spinner';
 import { addToCart, getToCart } from '../Redux/action';
@@ -53,13 +53,17 @@ import toast, { Toaster } from 'react-hot-toast';
     
       
   };
- // console.log("dataPrrr",data)
- const { cart } = useSelector((state) => state.products);
 
+ // console.log("dataPrrr",data)
+ const { cart,auth } = useSelector((state) => state.products);
+const location =useLocation()
  const dispatch=useDispatch()
  const handlecart=()=>{
-  //console.log(data)
-  let flag=true
+  
+  
+ 
+ 
+    let flag=true
   for(let i=0; i<cart.length; i++){
     if(data.id==cart[i].id){
       flag=false
@@ -67,22 +71,24 @@ import toast, { Toaster } from 'react-hot-toast';
             break;
     }
   }
-  if(flag){
-    dispatch(addToCart(data))
-    toast.success('Look at my styles.', {
-      style: {
-        border: '1px solid #713200',
-        padding: '16px',
-        color: '#713200',
-      },
-      iconTheme: {
-        primary: '#713200',
-        secondary: '#FFFAEE',
-      },
-    });
-  }else{
-    toast.error("Product already in Cart")
-  }
+    if(flag){
+      dispatch(addToCart(data))
+      toast.success('Product Added To Cart', {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      });
+    }else{
+      toast.error("Product already in Cart")
+    }
+  
+  
       
       
     
@@ -94,7 +100,7 @@ import toast, { Toaster } from 'react-hot-toast';
     }, 1000);
     pro();
     dispatch(getToCart)
-  }, []);
+  }, [location.search]);
 
  const Rating=({ rating, numReviews })=>{
 	return (

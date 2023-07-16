@@ -21,30 +21,12 @@ const Mens = () => {
 	const [order, setorder] = useState('')
 	const location = useLocation();
 	const dispatch = useDispatch();
-	//   const categoryParamas = {
-	// 		params: {
-	// 			category_values: searchParams.getAll("category_values"),
-	// 			brand_name: searchParams.getAll("brand_name"),
-	// 			_sort: searchParams.get("order") && "price",
-	// 			_order: searchParams.get("order"),
-	// 			_page: searchParams.get("page") || 1,
-	// 			_limit: 9,
-	// 		},
-	// 	};
 
-
-	// 	React.useEffect(() => {
-	// 		document.title = "Products";
-	// 		dispatch(getProduct(categoryParamas));
-
-
-	//   }, [location.search]);
 
 
 	const handlechange = (e) => {
 		e.preventDefault()
-		//console.log(e.target.checked);
-		// se{brand([..{brand ,e.target.value])
+	
 		setupdate(!update)
 		let newbrand = [...brand]
 		let value = e.target.value
@@ -111,7 +93,7 @@ const Mens = () => {
 		<h1>Something is wrong</h1>
 	) : (
 		<>
-			<Box w='90%' margin='auto' display="flex" justifyContent="space-between" mt='30px' padding='10px'>
+			<Box w={{base:'100%',sm:'100%',lg:'90%'}} margin='auto' display="flex" justifyContent="space-between" mt='30px' padding='10px'>
 				<Stack direction='row'><Text fontSize={24} color='gray' fontWeight={500} _hover={{ cursor: 'pointer', color: 'red.400' }}>Home/</Text><Text fontSize={24} color='gray' fontWeight={500} _hover={{ cursor: 'pointer', color: 'red.400' }}>Mens Products </Text></Stack>
 				<Box w='20%'><Select _hover={{ cursor: 'pointer', color: 'blue.500' }} placeholder='sort by : Recommended'>
 
