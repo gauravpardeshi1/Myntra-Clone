@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Banner from '../component/Slider'
 import { Box, Text, Image, Button, background, Center, Heading, SimpleGrid } from "@chakra-ui/react"
 import axios from 'axios'
+import LoadingSpinner from '../component/Spinner/Spinner'
+import { useSelector } from 'react-redux'
 const Home = () => {
     const [deals, setdeals] = useState([])
     const [Exclusive, setExclusive] = useState([])
@@ -9,7 +11,8 @@ const Home = () => {
     const [category, setcategory] = useState([])
     const [topdealse, settopdealse] = useState([])
 
- 
+    const { loading, error } = useSelector((state) => state.products);
+
 
     const getdata = () => {
         axios.get(`https://childish-nonchalant-gold.glitch.me/Deals`)
@@ -28,6 +31,10 @@ const Home = () => {
         getdata()
     }, [])
     //console.log('c',category);
+
+    if(loading){
+        return <LoadingSpinner/>
+    }
     return (
         <>
             <Banner />
