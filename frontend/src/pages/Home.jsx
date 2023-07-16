@@ -9,7 +9,7 @@ const Home = () => {
     const [category, setcategory] = useState([])
     const [topdealse, settopdealse] = useState([])
 
-
+ 
 
     const getdata = () => {
         axios.get(`http://localhost:8080/Deals`)

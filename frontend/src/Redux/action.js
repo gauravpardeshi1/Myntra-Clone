@@ -1,12 +1,12 @@
 import * as types from "./actiontypes";
 import axios from "axios";
 const URL = "https://obtainable-gray-tenor.glitch.me/allproducts";
-const MENS_URL = 'http://localhost:8080/mensproducts'
-const WOMEN_URL = 'http://localhost:8080/womensdata'
-const FUNITURE_URL = 'http://localhost:8080/funitureData'
-const KIDS_URL = 'http://localhost:8080/kids'
-const CART_URL = 'http://localhost:8080/cart'
-const USER_URL = 'http://localhost:8080/myntra_users'
+const MENS_URL = 'https://childish-nonchalant-gold.glitch.me/mensproducts'
+const WOMEN_URL = 'https://childish-nonchalant-gold.glitch.me/womensdata'
+const FUNITURE_URL = 'https://childish-nonchalant-gold.glitch.me/funitureData'
+const KIDS_URL = 'https://childish-nonchalant-gold.glitch.me/kids'
+const CART_URL = 'https://childish-nonchalant-gold.glitch.me/cart'
+const USER_URL = 'https://childish-nonchalant-gold.glitch.me/myntra_users'
 export const getProduct = (params) => (dispatch) => {
 	dispatch({ type: types.GET_PRODUCT_REQUEST });
 	axios
