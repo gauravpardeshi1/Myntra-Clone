@@ -9,6 +9,7 @@ const initialState = {
 	cart: [],
 	kids:[],
 	users:[],
+	wishlist:[],
 	total: 0,
 	auth: 0,
 	name:""
@@ -118,6 +119,20 @@ export const reducer = (state = initialState, { type, payload }) => {
 						...state,
 						loading: false,
 					
+					
+					};
+					case types.ADD_WISHLIST:
+					return {
+						...state,
+						loading: false,
+					
+					
+					};
+					case types.GET_WISHLIST:
+					return {
+						...state,
+						loading: false,
+						wishlist:payload
 					
 					};
 					case types.DELETE_TO_CART:

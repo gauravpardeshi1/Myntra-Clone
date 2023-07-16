@@ -12,6 +12,7 @@ import Cart from '../pages/cart'
 import LoadingSpinner from '../component/Spinner/Spinner'
 import Kids from '../pages/Kids'
 import Payment from '../pages/Payment'
+import WishList from '../pages/WishList'
 
 
 
@@ -30,6 +31,7 @@ const AllRoutes = () => {
       <Route path='/details/:id' element={<Simple/>}/>
       <Route path='/cart' element={<Cart/>} />
       <Route path='/payment' element={<Payment/>} />
+      <Route path='/wishlist' element={<WishList/>} />
       
     
       

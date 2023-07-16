@@ -40,7 +40,7 @@ const Womens = () => {
         setbrand(newbrand)
 
     }
-    console.log("brand", brand);
+    
     let obj = {
         params: {
             brand: SearchParam.getAll("brand"),

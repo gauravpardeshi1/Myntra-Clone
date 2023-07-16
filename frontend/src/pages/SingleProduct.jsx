@@ -31,21 +31,22 @@ export default function Simple() {
 
 
 
-
+const USERAUTH=localStorage.getItem('auth')
 
   const { cart } = useSelector((state) => state.products);
   const location = useLocation()
   const dispatch = useDispatch()
   const handlecart = () => {
-
-    let flag = true
-    for (let i = 0; i < cart.length; i++) {
-      if (data.id == cart[i].id) {
-        flag = false
-
-        break;
-      }
+   
+if(USERAUTH){
+  let flag=true
+  for (let i = 0; i < cart.length; i++) {
+    if (data.id == cart[i].id) {
+      flag = false
+      break;
     }
+  }
+  
     if (flag) {
       dispatch(addToCart(data))
       toast.success('Product Added To Cart', {
@@ -62,6 +63,11 @@ export default function Simple() {
     } else {
       toast.error("Product already in Cart")
     }
+  
+}else{
+
+  toast.error("Sign In First")
+  }
 
 
 
@@ -124,7 +130,7 @@ export default function Simple() {
     );
   }
 
-  //  console.log('s',location.state)
+   console.log('s',USERAUTH)
 
   return (
     <>

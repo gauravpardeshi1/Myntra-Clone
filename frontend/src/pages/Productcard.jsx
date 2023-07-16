@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
 	Flex,
 	Box,
@@ -11,6 +11,10 @@ import {
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
+import { AiOutlineStar } from "react-icons/ai"
+import { addToWishlist, getToWishList } from "../Redux/action";
+import { useDispatch, useSelector } from "react-redux";
+import toast, { Toaster } from 'react-hot-toast';
 
 
 
@@ -77,8 +81,48 @@ export function ProductCard({
 	const randomBolean = () => Math.random() >= 0.5;
 	const navigate = useNavigate();
 	// const { url } = media[0];
+	const dispatch=useDispatch()
 	const state = { id, name, para, price, rating, rs, image_url }
+	const { wishlist, loading, error } = useSelector((state) => state.products);
+
+	const HandleWishList=(para)=>{
+		let flag=true
+		console.log('pp',para,wishlist)
+for(let i=0; i<wishlist.length; i++){
+	if(para==wishlist[i].para){
+		flag=false;
+		break;
+	}}
+
+	if(flag){
+		dispatch(addToWishlist(state))
+		toast.success('Product Added To WishList', {
+			style: {
+			  border: '1px solid #713200',
+			  padding: '16px',
+			  color: '#713200',
+			},
+			iconTheme: {
+			  primary: '#713200',
+			  secondary: '#FFFAEE',
+			},
+		  });
+	}else{
+		toast('Product Already added !!', {
+			
+		  });
+	}
+
+		
+	}
+
+	useEffect(()=>{
+		dispatch(getToWishList)
+	},[])
 	return (
+		<>
+		<Toaster/>
+		
 		<Flex alignItems='center' justifyContent='center'>
 			<Box
 				transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
@@ -97,8 +141,16 @@ export function ProductCard({
 				rounded='lg'
 				shadow='lg'
 			>
+			
 				<Box h='50%' roundedTop='lg'>
-					<Image src={image_url} alt={name} roundedTop='lg' />
+					<Image src={image_url} alt={name} roundedTop='lg'  />
+					<Flex  position='absolute'
+					onClick={()=>HandleWishList(para)}
+  top='0'
+  left='0'  width='100%'  padding='10px'   z-index='1'
+  text-align= 'center'
+  color='white' justify="flex-end" align="flex-end" mt='2px' ><AiOutlineStar size={25} /> </Flex>
+
 				</Box>
 				<Box p='4'>
 					<Box display='flex' alignItems='baseline'>
@@ -159,5 +211,6 @@ export function ProductCard({
 				</Box>
 			</Box>
 		</Flex>
+		</>
 	);
 }

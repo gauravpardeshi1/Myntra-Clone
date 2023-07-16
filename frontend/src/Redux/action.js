@@ -7,6 +7,7 @@ const FUNITURE_URL = 'https://childish-nonchalant-gold.glitch.me/funitureData'
 const KIDS_URL = 'https://childish-nonchalant-gold.glitch.me/kids'
 const CART_URL = 'https://childish-nonchalant-gold.glitch.me/cart'
 const USER_URL = 'https://childish-nonchalant-gold.glitch.me/myntra_users'
+const WISHLIST_URL='http://localhost:8080/wishlist'
 export const getProduct = (params) => (dispatch) => {
 	dispatch({ type: types.GET_PRODUCT_REQUEST });
 	axios
@@ -88,12 +89,28 @@ export const addToCart = (data) => (dispatch) => {
 		})
 
 }
+export const addToWishlist = (state) => (dispatch) => {
+	axios.post(WISHLIST_URL, state)
+		.then(() => {
+
+			dispatch({ type: types.ADD_TO_CART });
+		})
+
+}
 
 export const deleteToCart = (id) => (dispatch) => {
 	axios.delete(`${CART_URL}/${id}`)
 		.then(() => {
 
 			dispatch({ type: types.DELETE_TO_CART });
+		})
+
+}
+
+export const getToWishList = (dispatch) => {
+	axios.get(WISHLIST_URL)
+		.then((res) => {
+			dispatch({ type: types.GET_WISHLIST, payload: res.data });
 		})
 
 }
@@ -113,6 +130,7 @@ export const addUser = (data) => (dispatch) => {
 		})
 
 }
+
 
 export const getUser = (dispatch) => {
 	axios.get(USER_URL)

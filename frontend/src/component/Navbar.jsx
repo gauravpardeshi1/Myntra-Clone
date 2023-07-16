@@ -37,6 +37,7 @@ import { useEffect, useState } from 'react';
 import { getToCart } from '../Redux/action';
 import { useDispatch, useSelector } from 'react-redux';
 import { USER_LOGOUT } from '../Redux/actiontypes';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 
@@ -46,17 +47,25 @@ export default function WithSubnavigation() {
     const [update, setupdate] = useState(false)
 
     const dispatch =useDispatch()
-	const { cart,auth } = useSelector((state) => state.products);
-  console.log('auth',auth)
+	const { cart } = useSelector((state) => state.products);
+  
     let navigate = useNavigate();
+    const USERAUTH=localStorage.getItem("auth")
+
+
+const handleauth=()=>{
+    toast.success('Successfully Logout!')
+    setupdate(!update)
+    localStorage.removeItem('auth')
+}
   useEffect(()=>{
     dispatch(getToCart)
-  },[])
+  },[update])
 
     return (
         <>
 
-
+<Toaster/>
 
 
 
@@ -115,27 +124,31 @@ export default function WithSubnavigation() {
                         {/* </Tooltip> */}
 
                         <Tooltip hasArrow label='Account' bg='gray.300' color='black'>
-                      {/* {auth==1 || auth==0? <Button onClick={()=>dispatch({type:USER_LOGOUT,payload:2})}>Logout</Button>:auth==2 || auth==0 ? */}
+                      {USERAUTH? <Button marginLeft={{lg:'-20px'}} _hover={{background:'red.400',color:'white'}}  onClick={handleauth}>Logout</Button>:
                       
                       <Box paddingTop={"7px"} onClick={() => navigate("/login")} _hover={{ cursor: "pointer" }}>
                                 
                                 <BsFillPersonFill size={25} />
                      
 
-                            </Box>
+                            </Box>}
                             {/* :<Button>Hello</Button>} */}
                            
                         </Tooltip>
                         <Tooltip hasArrow label='Wishlist' bg='gray.300' color='black'>
-                            <Box onClick={() => {
+                            <Box display={{base:'none',sm:'none',lg:'flex'}} onClick={() => {
                                 navigate("/wishlist")
                                 setupdate(!update)
 
-                            }} display="flex" alignItems={"center"} _hover={{ cursor: "pointer" }}> <AiOutlineStar size={25} /><Text textAlign={"center"} background="#FA4279" borderRadius={"50%"} marginTop={"-10px"} marginLeft={"-6px"} width="20px" height="20px" fontSize={14} color="white" fontWeight={600}>1</Text></Box>
+                            }} alignItems={"center"} _hover={{ cursor: "pointer" }}> <AiOutlineStar size={25} /><Text textAlign={"center"} background="#FA4279" borderRadius={"50%"} marginTop={"-10px"} marginLeft={"-6px"} width="20px" height="20px" fontSize={14} color="white" fontWeight={600}>1</Text></Box>
                         </Tooltip>
                         <Tooltip hasArrow label='Cart' bg='gray.300' color='black'>
                             <Box onClick={() => {
-                                navigate("/cart")
+                                if(USERAUTH){
+                                return  navigate("/cart")
+                                    setupdate(!update)
+                                }
+                                navigate("/login")
                                 setupdate(!update)
 
                             }}  _hover={{ cursor: "pointer" }} display="flex" alignItems={"center"}> <BiShoppingBag size={25} /><Text textAlign={"center"} background="#FA4279" borderRadius={"52%"} marginTop={"-10px"} marginLeft={"-6px"} width="20px" height="20px" fontSize={14} color="white" fontWeight={600}>{cart.length}</Text></Box>
@@ -444,7 +457,7 @@ const NAV_ITEMS = [
         ],
     },
     {
-        label: 'HOME & LIVING',
+        label: 'HOME',
         href: '/funiture',
         children: [
             {

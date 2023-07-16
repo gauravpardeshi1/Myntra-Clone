@@ -4,6 +4,7 @@ import { Box, Text, Image, Button, background, Center, Heading, SimpleGrid } fro
 import axios from 'axios'
 import LoadingSpinner from '../component/Spinner/Spinner'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 const Home = () => {
     const [deals, setdeals] = useState([])
     const [Exclusive, setExclusive] = useState([])
@@ -27,6 +28,7 @@ const Home = () => {
             .then((res) => settopdealse(res.data))
     }
     //console.log(deals);
+    const navigate=useNavigate()
     useEffect(() => {
         getdata()
     }, [])
@@ -44,7 +46,7 @@ const Home = () => {
 
                     <Box >
                         <SimpleGrid columns={{ base:2, sm: 2, md: 3, lg: 7 }} gap='10px'>
-                            {deals && deals.map((e) => <Image src={e.img} _hover={{ transform: "scale(0.95)", transition: "all .5s", cursor: "pointer" }} />)}
+                            {deals && deals.map((e) => <Image src={e.img} onClick={()=>navigate('/mens')} _hover={{ transform: "scale(0.95)", transition: "all .5s", cursor: "pointer" }} />)}
                         </SimpleGrid>
 
                     </Box>
@@ -57,7 +59,7 @@ const Home = () => {
 
                     <Box >
                         <SimpleGrid columns={{  base:2, sm: 2,md: 3, lg: 8 }} gap='10px'>
-                            {Exclusive.map((e) => <Image src={e.img} _hover={{ transform: "scale(0.95)", transition: "all .5s", cursor: "pointer" }} />)}
+                            {Exclusive.map((e) => <Image src={e.img} onClick={()=>navigate('/mens')} _hover={{ transform: "scale(0.95)", transition: "all .5s", cursor: "pointer" }} />)}
                         </SimpleGrid>
 
                     </Box>
@@ -96,7 +98,7 @@ const Home = () => {
 
                     <Box >
                         <SimpleGrid columns={{  base:2, sm: 2,md: 3, lg: 8 }} gap='10px'>
-                            {topdealse.map((e) => <Image src={e.img} _hover={{ transform: "scale(0.95)", transition: "all .5s", cursor: "pointer" }} />)}
+                            {topdealse.map((e) => <Image src={e.img} onClick={()=>navigate('/womens')} _hover={{ transform: "scale(0.95)", transition: "all .5s", cursor: "pointer" }} />)}
                         </SimpleGrid>
 
                     </Box>

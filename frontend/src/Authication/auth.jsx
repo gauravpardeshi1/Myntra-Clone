@@ -60,6 +60,7 @@ import { AUTH_TRUE } from '../Redux/actiontypes';
   }
  }
  if(flag){
+  localStorage.setItem("auth",true);
   toast.success('Login Successfully !!')
   dispatch({type:AUTH_TRUE,payload:true})
   navigate('/')
