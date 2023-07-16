@@ -27,6 +27,7 @@ const Home = () => {
     useEffect(() => {
         getdata()
     }, [])
+    //console.log('c',category);
     return (
         <>
             <Banner />
@@ -36,7 +37,7 @@ const Home = () => {
 
                     <Box >
                         <SimpleGrid columns={{ base:2, sm: 2, md: 3, lg: 7 }} gap='10px'>
-                            {deals.map((e) => <Image src={e.image_url} _hover={{ transform: "scale(0.95)", transition: "all .5s", cursor: "pointer" }} />)}
+                            {deals && deals.map((e) => <Image src={e.img} _hover={{ transform: "scale(0.95)", transition: "all .5s", cursor: "pointer" }} />)}
                         </SimpleGrid>
 
                     </Box>
@@ -49,7 +50,7 @@ const Home = () => {
 
                     <Box >
                         <SimpleGrid columns={{  base:2, sm: 2,md: 3, lg: 8 }} gap='10px'>
-                            {Exclusive.map((e) => <Image src={e.image_url} _hover={{ transform: "scale(0.95)", transition: "all .5s", cursor: "pointer" }} />)}
+                            {Exclusive.map((e) => <Image src={e.img} _hover={{ transform: "scale(0.95)", transition: "all .5s", cursor: "pointer" }} />)}
                         </SimpleGrid>
 
                     </Box>
@@ -62,7 +63,7 @@ const Home = () => {
 
                     <Box >
                         <SimpleGrid columns={{ base:2, sm: 2,md: 3, lg: 7 }} gap='10px'>
-                            {top.map((e) => <Image src={e.image_url} _hover={{ transform: "scale(0.95)", transition: "all .5s", cursor: "pointer" }} />)}
+                            {top.map((e) => <Image src={e.img} _hover={{ transform: "scale(0.95)", transition: "all .5s", cursor: "pointer" }} />)}
                         </SimpleGrid>
 
                     </Box>
@@ -75,7 +76,7 @@ const Home = () => {
 
                     <Box >
                         <SimpleGrid columns={{ base:2, sm: 2, md: 3, lg: 8 }} gap='10px'>
-                            {category.map((e) => <Image src={e.image_url} _hover={{ transform: "scale(0.95)", transition: "all .5s", cursor: "pointer" }} />)}
+                            {category &&category.map((e) => <Image src={e.img} _hover={{ transform: "scale(0.95)", transition: "all .5s", cursor: "pointer" }} />)}
                         </SimpleGrid>
 
                     </Box>
@@ -88,7 +89,7 @@ const Home = () => {
 
                     <Box >
                         <SimpleGrid columns={{  base:2, sm: 2,md: 3, lg: 8 }} gap='10px'>
-                            {topdealse.map((e) => <Image src={e.image_url} _hover={{ transform: "scale(0.95)", transition: "all .5s", cursor: "pointer" }} />)}
+                            {topdealse.map((e) => <Image src={e.img} _hover={{ transform: "scale(0.95)", transition: "all .5s", cursor: "pointer" }} />)}
                         </SimpleGrid>
 
                     </Box>

@@ -100,7 +100,6 @@ export const deleteToCart = (id) => (dispatch) => {
 export const getToCart = (dispatch) => {
 	axios.get(CART_URL)
 		.then((res) => {
-
 			dispatch({ type: types.GET_TO_CART, payload: res.data });
 		})
 

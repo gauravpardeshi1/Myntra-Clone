@@ -29,7 +29,7 @@ export function Rating({ rating, numReviews }) {
 							<BsStarFill
 								key={i + Math.random()}
 								style={{ marginLeft: "1" }}
-								// color={i < rating ? 'green.500' :"green.300"}
+							// color={i < rating ? 'green.500' :"green.300"}
 							/>
 						);
 					}
@@ -77,25 +77,26 @@ export function ProductCard({
 	const randomBolean = () => Math.random() >= 0.5;
 	const navigate = useNavigate();
 	// const { url } = media[0];
+	const state = { id, name, para, price, rating, rs, image_url }
 	return (
 		<Flex alignItems='center' justifyContent='center'>
 			<Box
 				transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
 				boxShadow={useColorModeValue("lg", "lg")}
 				_hover={{
-                    
+
 					transform: "translateY(-5px)",
 					transition: "all 0.2s ease-out",
 					boxShadow: "0 10px 50px -20px #b0c4de",
-                    cursor:'pointer'
-                    
+					cursor: 'pointer'
+
 				}}
 				w='60'
 				bg={useColorModeValue("white", "root.blueGray")}
 				maxW='xs'
 				rounded='lg'
 				shadow='lg'
-				>
+			>
 				<Box h='50%' roundedTop='lg'>
 					<Image src={image_url} alt={name} roundedTop='lg' />
 				</Box>
@@ -133,10 +134,10 @@ export function ProductCard({
 							isTruncated>
 							{para}
 						</Box>
-						
+
 					</Flex>
 					<Flex justifyContent='space-between' alignContent='center'>
-						<Rating rating={rating} numReviews={rating*50} />
+						<Rating rating={rating} numReviews={rating * 50} />
 						<Code
 							fontSize='md'
 							color={useColorModeValue("gray.800", "black")}
@@ -151,8 +152,8 @@ export function ProductCard({
 						w='full'
 						mt='3'
 						colorScheme={useColorModeValue("pink", "pink")}
-                        position={'none'}
-						onClick={() => navigate(`/details/${id}`)}>
+						position={'none'}
+						onClick={() => navigate(`/details/${id}`, { state })}>
 						More Details
 					</Button>
 				</Box>

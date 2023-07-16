@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getWomenProduct } from '../Redux/action';
 import Productcard, { ProductCard } from "./Productcard";
 import Paggination from './Paggination';
-import { useParams, useSearchParams } from 'react-router-dom'
+import { useLocation, useParams, useSearchParams } from 'react-router-dom'
 
 const Womens = () => {
     const [SearchParam, setSearchParam] = useSearchParams()
@@ -19,10 +19,12 @@ const Womens = () => {
     const [page, setpage] = useState(1)
     const [order, setorder] = useState('')
     const dispatch = useDispatch()
+    const location=useLocation()
     const { womensproducts, loading, error } = useSelector((state) => state.products);
 
 
     const handlechange = (e) => {
+
         e.preventDefault()
         //console.log(e.target.checked);
         // se{brand([..{brand ,e.target.value])
@@ -60,7 +62,7 @@ const Womens = () => {
     }, [brand, order])
     useEffect(() => {
         dispatch(getWomenProduct(page, obj))
-    }, [page])
+    }, [location.search,order,page])
     const handlesort = (e) => {
         setorder(e.target.value)
         setupdate(!update)

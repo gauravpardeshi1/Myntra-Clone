@@ -26,7 +26,7 @@ const Mens = () => {
 
 	const handlechange = (e) => {
 		e.preventDefault()
-	
+
 		setupdate(!update)
 		let newbrand = [...brand]
 		let value = e.target.value
@@ -39,7 +39,7 @@ const Mens = () => {
 		setbrand(newbrand)
 
 	}
-	console.log("brand", brand);
+	//console.log("brand", brand);
 	let obj = {
 		params: {
 			brand: SearchParam.getAll("brand"),
@@ -58,14 +58,15 @@ const Mens = () => {
 		}
 		setSearchParam(params)
 
-	}, [brand, order])
+	}, [brand,order])
 	useEffect(() => {
 		dispatch(getMensProduct(page, obj))
-	}, [page])
+	}, [location.search,page,order])
 	const handlesort = (e) => {
 		setorder(e.target.value)
 		setupdate(!update)
 	}
+	// console.log('LL',location.search)
 	return loading ? (
 		<><Box w='100%' display={'flex'} gap='40px'  >
 			<Box w='30%'>
@@ -93,7 +94,7 @@ const Mens = () => {
 		<h1>Something is wrong</h1>
 	) : (
 		<>
-			<Box w={{base:'100%',sm:'100%',lg:'90%'}} margin='auto' display="flex" justifyContent="space-between" mt='30px' padding='10px'>
+			<Box w={{ base: '100%', sm: '100%', lg: '90%' }} margin='auto' display="flex" justifyContent="space-between" mt='30px' padding='10px'>
 				<Stack direction='row'><Text fontSize={24} color='gray' fontWeight={500} _hover={{ cursor: 'pointer', color: 'red.400' }}>Home/</Text><Text fontSize={24} color='gray' fontWeight={500} _hover={{ cursor: 'pointer', color: 'red.400' }}>Mens Products </Text></Stack>
 				<Box w='20%'><Select _hover={{ cursor: 'pointer', color: 'blue.500' }} placeholder='sort by : Recommended'>
 
@@ -126,14 +127,14 @@ const Mens = () => {
 						<Box mt='20px'>
 							<Text textAlign={'left'} fontSize={18} fontWeight={500}>brands</Text>
 							<Stack textAlign={'left'} spacing={1} direction='column' mt='10px'>
-							<Box>
+								<Box>
 
-<input value="Moda Rapido" onChange={handlechange} type="checkbox" checked={brand.includes("Moda Rapido")} />
-<label style={{ marginLeft: '5px', fontWeight: 'normal' }}>ADIDAS</label>
-</Box>
-<Box>
+									<input value="ADIDAS" onChange={handlechange} type="checkbox" checked={brand.includes("ADIDAS")} />
+									<label style={{ marginLeft: '5px', fontWeight: 'normal' }}>ADIDAS</label>
+								</Box>
+								<Box>
 
-									<input value="Moda Rapido" onChange={handlechange} type="checkbox" checked={brand.includes("Moda Rapido")} />
+									<input value="Puma" onChange={handlechange} type="checkbox" checked={brand.includes("Puma")} />
 									<label style={{ marginLeft: '5px', fontWeight: 'normal' }}>Puma</label>
 								</Box>
 								<Box>

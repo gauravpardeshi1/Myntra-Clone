@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getKidsProduct, getWomenProduct } from '../Redux/action';
 import Productcard, { ProductCard } from "./Productcard";
 import Paggination from './Paggination';
-import { useParams, useSearchParams } from 'react-router-dom'
+import { useLocation, useParams, useSearchParams } from 'react-router-dom'
 
 const Kids = () => {
     const [SearchParam, setSearchParam] = useSearchParams()
@@ -38,7 +38,7 @@ const Kids = () => {
         setbrand(newbrand)
 
     }
-    console.log("brand", brand);
+    
     let obj = {
         params: {
             brand: SearchParam.getAll("brand"),
@@ -46,7 +46,7 @@ const Kids = () => {
             _order: SearchParam.get("order")
         }
     }
-
+    const location=useLocation()
     useEffect(() => {
         let params = {
             brand
@@ -60,7 +60,7 @@ const Kids = () => {
     }, [brand, order])
     useEffect(() => {
         dispatch(getKidsProduct(page, obj))
-    }, [page])
+    }, [location.search,order,page])
     const handlesort = (e) => {
         setorder(e.target.value)
         setupdate(!update)

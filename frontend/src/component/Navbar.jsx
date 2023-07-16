@@ -368,7 +368,7 @@ const NAV_ITEMS = [
                 ],
                 href: '/mens',
             }
-        ], href: '/mens',
+        ],
 
     },
     {
@@ -425,23 +425,23 @@ const NAV_ITEMS = [
                 ],
                 href: '/womens',
             }
-        ], href: '/womens',
+        ],
 
     },
     {
         label: 'KIDS',
-        href: '/kids',
+       
         children: [
             {
 
                 subLabel: [
-                    { sub: "George Thomasam" },
-                    { sub: "Boomrang" },
+                    { sub: "Kids t-shirts" },
+                    { sub: "Shirts" },
                 ],
                 href: '/kids',
             },
 
-        ],href: '/kids',
+        ],
     },
     {
         label: 'HOME & LIVING',
@@ -460,7 +460,7 @@ const NAV_ITEMS = [
                 href: '/funiture',
             },
 
-        ],href:'/funiture'
+        ],
     },
     {
         label: 'BEAUTY',
@@ -498,7 +498,7 @@ const NAV_ITEMS = [
                 href: '/product',
             },
 
-        ],href:'/success'
+        ],
     }
 
 ];

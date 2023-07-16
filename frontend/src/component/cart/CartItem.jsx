@@ -7,9 +7,10 @@ import {
 } from "@chakra-ui/react";
 import { PriceTag } from "./PriceTag";
 import { CartProductMeta } from "./CartProductMeta";
-import { deleteToCart } from "../../Redux/action";
-import { useDispatch } from "react-redux";
+import { deleteToCart, getToCart } from "../../Redux/action";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { GET_TO_CART } from "../../Redux/actiontypes";
 const QuantitySelect = (props) => {
 
 	
@@ -43,11 +44,15 @@ export const CartItem = (props) => {
 		onChangeQuantity
 	
 	} = props;
+	const { cart } = useSelector((state) => state.products);
+	console.log(cart)
 	const dispatch=useDispatch()
-	const onClickDelete=(id)=>{
-		dispatch(deleteToCart(id))
+	const onClickDelete=(itemId)=>{
+		const filtered = cart.filter((item)=>item.id!==itemId)
+		dispatch({ type: GET_TO_CART, payload:filtered });
+		dispatch(deleteToCart(itemId))
 		setupdate(!update)
-		window.location.reload()
+		// window.location.reload()
 	}
 
 	useEffect(()=>{

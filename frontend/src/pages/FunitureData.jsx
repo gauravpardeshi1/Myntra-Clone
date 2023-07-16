@@ -7,10 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getmenProduct, getfunitureProduct } from '../Redux/action';
 import Productcard, { ProductCard } from "./Productcard";
 import Paggination from './Paggination';
-import { useParams, useSearchParams } from 'react-router-dom'
+import { useLocation, useParams, useSearchParams } from 'react-router-dom'
 
 const Funiture = () => {
     const [SearchParam, setSearchParam] = useSearchParams()
+	const location = useLocation();
 
     const initbrand = SearchParam.getAll('brand')
     const [page, setpage] = useState(1)
@@ -61,7 +62,7 @@ const Funiture = () => {
 
     useEffect(()=>{
         dispatch(getfunitureProduct(page,obj))
-    },[page,update])
+    },[location.search,order,page,update])
     //  console.log('o',order)
     const handlesort =(e)=>{
         setorder(e.target.value)
