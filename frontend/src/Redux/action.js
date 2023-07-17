@@ -7,7 +7,7 @@ const FUNITURE_URL = 'https://childish-nonchalant-gold.glitch.me/funitureData'
 const KIDS_URL = 'https://childish-nonchalant-gold.glitch.me/kids'
 const CART_URL = 'https://childish-nonchalant-gold.glitch.me/cart'
 const USER_URL = 'https://childish-nonchalant-gold.glitch.me/myntra_users'
-const WISHLIST_URL='http://localhost:8080/wishlist'
+const WISHLIST_URL='https://childish-nonchalant-gold.glitch.me/wishlist'
 export const getProduct = (params) => (dispatch) => {
 	dispatch({ type: types.GET_PRODUCT_REQUEST });
 	axios
