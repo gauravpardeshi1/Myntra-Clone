@@ -101,7 +101,7 @@ const handleauth=()=>{
                         />
 
                     </Flex>
-                    <Box w='100px' h='50px' display={{base:'none'}} >                    <Image  onClick={() => navigate("/")}  width="100%" marginRight="28%"  src='https://rad-manatee-0e439b.netlify.app/Common%20Files/image/myntra-removebg-preview.png' alt="" />
+                    <Box w='100px' h='50px' >                    <Image  onClick={() => navigate("/")}  width="100%" marginRight="28%"  src='https://rad-manatee-0e439b.netlify.app/Common%20Files/image/myntra-removebg-preview.png' alt="" />
                     </Box>
                     <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
 
