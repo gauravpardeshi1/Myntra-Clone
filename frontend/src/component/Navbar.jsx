@@ -17,7 +17,8 @@ import {
     SimpleGrid,
     Center,
     UnorderedList,
-    Input
+    Input,
+    Image
 } from '@chakra-ui/react';
 import { Tooltip } from '@chakra-ui/react'
 import {
@@ -100,7 +101,7 @@ const handleauth=()=>{
                         />
 
                     </Flex>
-                    <Box w='100px' h='50px' >                    <img onClick={() => navigate("/")} style={{ width: "100%", marginRight: "28%" }} src='https://rad-manatee-0e439b.netlify.app/Common%20Files/image/myntra-removebg-preview.png' alt="" />
+                    <Box w='100px' h='50px' display={{base:'none'}} >                    <Image  onClick={() => navigate("/")}  width="100%" marginRight="28%"  src='https://rad-manatee-0e439b.netlify.app/Common%20Files/image/myntra-removebg-preview.png' alt="" />
                     </Box>
                     <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
 
@@ -120,13 +121,14 @@ const handleauth=()=>{
                         {/* <BiSearch size={25} /> */}
 
                         {/* <Tooltip hasArrow label='Search' bg='gray.300' color='black'> */}
-                        <Box marginRight={{ lg: '40px' }} w={{ base: '170px', sm: '180px', md: '400px', lg: '500px' }} > <Input placeholder='Search here' /></Box>
+                        <Box ml={{base:'10px'}} marginRight={{ base :'-10px',lg: '40px' }}w={{ base: '190px', sm: '180px', md: '400px', lg: '500px' }} >
+                             <Input placeholder='Search here' /></Box>
                         {/* </Tooltip> */}
 
                         <Tooltip hasArrow label='Account' bg='gray.300' color='black'>
                       {USERAUTH? <Button marginLeft={{lg:'-20px'}} _hover={{background:'red.400',color:'white'}}  onClick={handleauth}>Logout</Button>:
                       
-                      <Box paddingTop={"7px"} onClick={() => navigate("/login")} _hover={{ cursor: "pointer" }}>
+                      <Box paddingTop={"7px"} ml={{base:'40px'}} onClick={() => navigate("/login")} _hover={{ cursor: "pointer" }}>
                                 
                                 <BsFillPersonFill size={25} />
                      

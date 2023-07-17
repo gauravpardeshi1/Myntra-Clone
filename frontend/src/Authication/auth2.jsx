@@ -84,9 +84,12 @@ return (
         <Box
           py={{ base: '0', sm: '8' }}
           px={{ base: '4', sm: '10' }}
-          
+          w={{base:'90%'}}
+          margin={{base:'auto'}}
+ 
+           padding={{base:'20px'}}
           boxShadow={{ base: 'none', sm: 'md' }}
-          borderRadius={{ base: 'none', sm: 'xl' }}
+          borderRadius={{ base: 'xl', sm: 'xl' }}
           bg='white'
         >
           <Stack spacing="6" >
